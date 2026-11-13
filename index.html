@@ -1909,7 +1909,7 @@ html:not(.dark) body[data-finhub-theme="midnightpop"] #tab-accounts .account-car
 <i class="fa-solid fa-arrow-trend-down w-5"></i><span class="sidebar-nav-label">Debt &amp; Savings</span>
 </button></div><div class="nav-group"><button aria-label="Reports" class="nav-btn w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="nav-reports" onclick="switchTab('reports')" title="Reports">
 <i class="fa-solid fa-file-lines w-5"></i><span class="sidebar-nav-label">Reports</span>
-</button></div><div class="nav-group nav-group-settings"><button aria-label="Settings" class="nav-btn w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="nav-settings" onclick="switchTab('settings')" title="Settings">
+</button></div><div class="nav-group"><button aria-label="Financial Check-In" class="nav-btn w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="nav-financial-checkin" onclick="switchTab('financial-checkin')" title="Financial Check-In"><i class="fa-solid fa-clipboard-check w-5"></i><span class="sidebar-nav-label">Financial Check-In</span></button></div><div class="nav-group nav-group-settings"><button aria-label="Settings" class="nav-btn w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="nav-settings" onclick="switchTab('settings')" title="Settings">
 <i class="fa-solid fa-gear w-5"></i><span class="sidebar-nav-label">Settings</span>
 </button></div></nav>
 <div class="px-3 pt-3 sidebar-back-refresh">
@@ -2055,15 +2055,63 @@ html:not(.dark) body[data-finhub-theme="midnightpop"] #tab-accounts .account-car
 <div class="monthly-panel"><div class="flex items-center gap-2 mb-2"><i class="fa-solid fa-database text-indigo-600 text-xl"></i><h3 class="font-bold">JSON backup</h3></div><p class="text-sm text-gray-500 mb-4">Create a full backup of your FinHub data.</p><button class="px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 font-semibold" onclick="exportData()">Download JSON backup</button></div>
 <div class="monthly-panel"><div class="flex items-center gap-2 mb-2"><i class="fa-solid fa-upload text-indigo-600 text-xl"></i><h3 class="font-bold">Import backup</h3></div><p class="text-sm text-gray-500 mb-4">Restore a previously exported FinHub backup.</p><label class="inline-flex cursor-pointer px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 font-semibold">Choose backup file<input accept=".json,.xlsx,application/json,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" class="hidden" onchange="importData(event)" type="file"/></label></div>
 </div>
-<div class="space-y-4" id="reports-financial-close">
-<div><h3 class="text-lg font-bold">Financial Close</h3><p class="text-xs text-gray-500 mt-1">Month-end and year-end review checklists, snapshots, and data integrity checks.</p></div>
-<div class="grid grid-cols-1 xl:grid-cols-2 gap-4" id="financial-close-period-blocks">
-<div class="space-y-3 rounded-2xl border border-gray-200 dark:border-gray-800 p-3"><h4 class="font-semibold text-sm">Month-End Close</h4><details class="global-collapsible-section rounded-2xl overflow-hidden" data-global-collapsible="true"><summary class="global-collapsible-summary"><span>Monthly Close</span><span class="global-collapsible-description">Review month-end activity and save a monthly snapshot.</span></summary><div class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3"><div class="flex flex-wrap justify-between gap-2"><div><h3 class="text-sm font-bold">Monthly Close</h3><p class="text-xs text-gray-500">Review month-end activity, work through the checklist and save a snapshot. Closing does not lock transactions.</p></div><div class="flex gap-2"><input class="border rounded-lg px-2 py-1 text-xs" id="monthly-close-period" onchange="renderMonthlyClose()" type="month"/><button class="border rounded-lg px-3 py-1 text-xs" onclick="renderMonthlyClose()">Refresh review</button></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs" id="monthly-close-summary"></div><div class="space-y-2 text-xs" id="monthly-close-checklist"></div><div class="flex flex-wrap gap-2"><button class="px-3 py-2 bg-indigo-600 text-white rounded-lg text-xs" onclick="completeMonthlyClose()">Save monthly close snapshot</button><button class="hidden px-3 py-2 border rounded-lg text-xs" id="monthly-close-reopen" onclick="reopenMonthlyClose()">Reopen month</button></div><div class="text-xs text-gray-500" id="monthly-close-history"></div></div></details></div>
-<div class="space-y-3 rounded-2xl border border-gray-200 dark:border-gray-800 p-3"><h4 class="font-semibold text-sm">Year-End Close</h4><details class="global-collapsible-section rounded-2xl overflow-hidden" data-global-collapsible="true"><summary class="global-collapsible-summary"><span>Year-End Close</span><span class="global-collapsible-description">Review the year and save a year-end snapshot.</span></summary><div class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3"><div class="flex flex-wrap items-center justify-between gap-2"><div><h3 class="text-sm font-bold">Year-End Close</h3><p class="text-xs text-gray-500">Review the year, save a year-end snapshot and continue in the same FinHub file.</p></div><div class="flex gap-2"><input class="border rounded-lg px-2 py-1 text-xs w-24" id="year-end-period" max="2200" min="2000" type="number"/><button class="border rounded-lg px-3 py-1 text-xs" onclick="renderYearEndClose()">Refresh review</button></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs" id="year-end-summary"></div><div class="space-y-2 text-xs" id="year-end-checklist"></div><div class="flex flex-wrap gap-2"><button class="px-3 py-2 bg-indigo-600 text-white rounded-lg text-xs" onclick="completeYearEndClose()">Save year-end snapshot</button><button class="hidden px-3 py-2 border rounded-lg text-xs" id="year-end-reopen" onclick="reopenYearEndClose()">Reopen year</button></div><div class="text-xs text-gray-500" id="year-end-history"></div></div></details></div>
-</div>
 <div class="fh-reorderable-section rounded-xl" id="financial-close-data-health"><h4 class="font-semibold text-sm mb-2">Data Health &amp; Integrity</h4><details class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3 fh-reorderable-section" data-fh-drag-ready="false" id="data-health-details" open=""><summary class="cursor-pointer list-none flex items-center justify-between gap-3"><span><strong class="text-sm">Data Health &amp; Integrity</strong><span class="block text-xs text-gray-500 mt-1">Read-only checks for common data quality issues</span></span><i aria-hidden="true" class="fa-solid fa-chevron-down text-indigo-500 transition-transform"></i></summary><div class="pt-3"><div class="flex items-center justify-between gap-2 mb-3"><p class="text-xs text-gray-500">These checks flag records for review; they do not change your data.</p><button class="border rounded-lg px-3 py-1.5 text-xs" onclick="renderDataHealth()" type="button">Run checks</button></div><div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs" id="data-health-results"></div></div></details></div>
 </div>
 </section>
+
+<!-- FINANCIAL CHECK-IN -->
+<section class="tab-content hidden space-y-6" id="tab-financial-checkin">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-3">
+    <div><h2 class="text-2xl font-bold">Financial Check-In</h2><p class="text-sm text-gray-500 dark:text-gray-400">A quick monthly review to keep your household finances on track.</p></div>
+    <span class="text-xs text-gray-500">About 5–10 minutes</span>
+  </div>
+  <div class="flex flex-wrap gap-2 border-b border-gray-200 dark:border-gray-800 pb-2" role="tablist" aria-label="Financial Check-In">
+    <button type="button" id="checkin-tab-monthly" class="px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white" onclick="switchFinancialCheckInView('monthly')">Monthly Check-In</button>
+    <button type="button" id="checkin-tab-yearly" class="px-4 py-2 rounded-xl text-sm font-semibold text-gray-500" onclick="switchFinancialCheckInView('yearly')">Year-End Review</button>
+    <button type="button" id="checkin-tab-history" class="px-4 py-2 rounded-xl text-sm font-semibold text-gray-500" onclick="switchFinancialCheckInView('history')">Snapshot History</button>
+  </div>
+  <div id="checkin-view-monthly" class="space-y-4">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 space-y-3">
+      <div class="flex flex-wrap items-center justify-between gap-3"><div><h3 class="text-lg font-bold">Monthly overview</h3><p class="text-sm text-gray-500">Based on recorded transactions and current account balances.</p></div><input id="checkin-month-picker" type="month" class="border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-2 text-sm bg-transparent" onchange="renderFinancialCheckIn()"></div>
+      <div class="grid grid-cols-2 xl:grid-cols-4 gap-3">
+        <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-4"><div class="text-sm text-gray-500">Income</div><div class="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1" id="checkin-month-income">—</div></div>
+        <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-4"><div class="text-sm text-gray-500">Expenses</div><div class="text-xl font-bold mt-1" id="checkin-month-expenses">—</div></div>
+        <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-4"><div class="text-sm text-gray-500">Debt payments</div><div class="text-xl font-bold mt-1" id="checkin-month-debt">—</div></div>
+        <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-4"><div class="text-sm text-gray-500">Current net worth</div><div class="text-xl font-bold mt-1" id="checkin-month-networth">—</div></div>
+      </div>
+      <p class="text-xs text-gray-500" id="checkin-month-detail"></p>
+    </div>
+    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 space-y-3">
+      <div class="flex flex-wrap justify-between items-center gap-2"><div><h3 class="text-lg font-bold">Your monthly checklist</h3><p class="text-sm text-gray-500">Tick off what you've reviewed. This does not change or resolve financial records.</p></div><strong class="text-sm" id="checkin-month-progress">0 of 5 complete</strong></div>
+      <div class="h-2 rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden"><div id="checkin-month-progress-bar" class="h-full rounded-full bg-emerald-500" style="width:0%"></div></div>
+      <div id="checkin-month-checklist" class="space-y-2"></div>
+    </div>
+  </div>
+  <div id="checkin-view-yearly" class="hidden space-y-4">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 space-y-3">
+      <div class="flex flex-wrap items-center justify-between gap-3"><div><h3 class="text-lg font-bold">Year-End Review</h3><p class="text-sm text-gray-500">Annual activity review. Net worth below is your current balance, not a reconstructed year-end balance.</p></div><input id="checkin-year-picker" type="number" min="2000" max="2200" class="border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-2 text-sm bg-transparent w-28" onchange="renderFinancialCheckIn()"></div>
+      <div class="grid grid-cols-2 xl:grid-cols-4 gap-3">
+        <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-4"><div class="text-sm text-gray-500">Annual income</div><div class="text-xl font-bold" id="checkin-year-income">—</div></div>
+        <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-4"><div class="text-sm text-gray-500">Annual expenses</div><div class="text-xl font-bold" id="checkin-year-expenses">—</div></div>
+        <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-4"><div class="text-sm text-gray-500">Debt payments</div><div class="text-xl font-bold" id="checkin-year-debt">—</div></div>
+        <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-4"><div class="text-sm text-gray-500">Current net worth</div><div class="text-xl font-bold" id="checkin-year-networth">—</div></div>
+      </div>
+      <p class="text-xs text-gray-500" id="checkin-year-detail"></p>
+    </div>
+    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 space-y-3">
+      <div class="flex flex-wrap justify-between gap-2"><div><h3 class="font-bold">Annual review checklist</h3><p class="text-xs text-gray-500">Review the year's records without finalizing or locking the period.</p></div><strong class="text-sm" id="checkin-year-progress">0 of 5 complete</strong></div>
+      <div class="h-2 rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden"><div id="checkin-year-progress-bar" class="h-full rounded-full bg-emerald-500" style="width:0%"></div></div>
+      <div id="checkin-year-checklist" class="space-y-2"></div>
+    </div>
+  </div>
+  <div id="checkin-view-history" class="hidden">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-4 space-y-3">
+      <div><h3 class="text-lg font-bold">Snapshot History</h3><p class="text-sm text-gray-500">Previously saved snapshots. These are historical records and are not changed by this review page.</p></div>
+      <div id="checkin-snapshot-history" class="space-y-2"></div>
+    </div>
+  </div>
+</section>
+
 <!-- TAB 2: PAYCHEQUE ZBB PLANNER -->
 <section class="tab-content hidden space-y-6" id="tab-biweekly">
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -4605,7 +4653,112 @@ Bonus" rows="4"></textarea></div>
       if(previous) switchTab(previous,true);
       updateFinHubBackButton();
     }
-    function switchTab(tabId, isBackNavigation=false) {
+    
+    const FINANCIAL_CHECKIN_ITEMS = [
+      {key:'statements',label:'Statement transactions imported and matched',detail:'Review unmatched statement items and accounts awaiting statement review.',target:'reports'},
+      {key:'reconciliation',label:'Accounts reconciled',detail:'Review account reconciliation status and unmatched manual transactions.',target:'accounts'},
+      {key:'categorization',label:'Transactions categorized',detail:'Review transactions missing categories or subcategories.',target:'ledger'},
+      {key:'budget',label:'Budget and spending reviewed',detail:'Review your budget and spending activity.',target:'biweekly'},
+      {key:'debt',label:'Debt payments reviewed',detail:'Review debt balances, payments and interest.',target:'debt'}
+    ];
+    function financialCheckInPeriod(){
+      const el=document.getElementById('checkin-month-picker');
+      return el?.value || new Date().toISOString().slice(0,7);
+    }
+    function financialCheckInYear(){
+      const el=document.getElementById('checkin-year-picker');
+      return Number(el?.value)||new Date().getFullYear();
+    }
+    function financialCheckInChecklistStore(){
+      state.financialCheckInChecklist=state.financialCheckInChecklist||{monthly:{},yearly:{}};
+      state.financialCheckInChecklist.monthly=state.financialCheckInChecklist.monthly||{};
+      state.financialCheckInChecklist.yearly=state.financialCheckInChecklist.yearly||{};
+      return state.financialCheckInChecklist;
+    }
+    function financialCheckInCurrentNetWorth(){
+      const accounts=(state.accounts||[]).filter(a=>!a.archived);
+      const assets=accounts.filter(a=>a.type!=='Liability').reduce((s,a)=>s+(Number(a.balance)||0),0);
+      const liabilities=accounts.filter(a=>a.type==='Liability').reduce((s,a)=>s+(Number(a.balance)||0),0);
+      return assets-liabilities;
+    }
+    function financialCheckInMetrics(start,end){
+      const tx=(state.transactions||[]).filter(t=>String(t.date||'')>=start&&String(t.date||'')<=end);
+      const income=tx.filter(t=>t.type==='Income'&&!t.excludeFromIncomeReporting&&t.category!=='Transfer').reduce((s,t)=>s+(Number(t.amount)||0),0);
+      const expenses=tx.reduce((s,t)=>s+getExpenseReportingComponents(t).reduce((a,c)=>a+(Number(c.amount)||0),0),0);
+      const debtPayments=tx.filter(t=>['Debt Payment','Debt Payment Reversal'].includes(t.type)).reduce((s,t)=>s+(t.type==='Debt Payment Reversal'?-1:1)*(Number(t.amount)||0),0);
+      const unmatched=tx.filter(t=>!t.reconciled&&!t.statementMatchId&&!t.statementMatchGroupId);
+      const uncategorized=tx.filter(t=>['Expense','Income'].includes(t.type)&&(!t.category||/uncategorized/i.test(t.category)||!t.subcategory||/uncategorized/i.test(t.subcategory)));
+      const accounts=(state.accounts||[]).filter(a=>!a.archived);
+      const awaiting=accounts.filter(a=>!a.lastReconciledAt||String(a.lastReconciledAt).slice(0,7)!==String(start).slice(0,7));
+      return {tx,income,expenses,debtPayments,unmatched,uncategorized,accounts,awaiting};
+    }
+    function financialCheckInRenderChecklist(kind,period,hostId,countId,barId){
+      const host=document.getElementById(hostId);if(!host)return;
+      const store=financialCheckInChecklistStore();
+      const bucket=kind==='monthly'?store.monthly:store.yearly;
+      const flags=bucket[period]||{};
+      const done=FINANCIAL_CHECKIN_ITEMS.filter(x=>!!flags[x.key]).length;
+      host.innerHTML=FINANCIAL_CHECKIN_ITEMS.map(item=>{
+        const checked=!!flags[item.key];
+        return `<div class="rounded-xl border border-gray-200 dark:border-gray-800 p-3 flex items-start gap-3">
+          <input type="checkbox" class="mt-1 h-4 w-4 accent-indigo-600" aria-label="${escapeHtml(item.label)}" ${checked?'checked':''} onchange="setFinancialCheckInItem('${kind}','${escapeHtml(period)}','${item.key}',this.checked)">
+          <div class="min-w-0 flex-1"><div class="font-semibold text-sm">${escapeHtml(item.label)}</div><p class="text-xs text-gray-500 mt-1">${escapeHtml(item.detail)}</p></div>
+          <button type="button" class="text-xs font-semibold text-indigo-600 dark:text-indigo-300 hover:underline whitespace-nowrap" onclick="switchTab('${item.target}')">Review</button>
+        </div>`;
+      }).join('');
+      const count=document.getElementById(countId);if(count)count.textContent=`${done} of 5 complete`;
+      const bar=document.getElementById(barId);if(bar)bar.style.width=`${done/5*100}%`;
+    }
+    function setFinancialCheckInItem(kind,period,key,checked){
+      const store=financialCheckInChecklistStore();
+      const bucket=kind==='monthly'?store.monthly:store.yearly;
+      bucket[period]=bucket[period]||{};
+      bucket[period][key]=!!checked;
+      saveData();
+      financialCheckInRenderChecklist(kind,period,kind==='monthly'?'checkin-month-checklist':'checkin-year-checklist',kind==='monthly'?'checkin-month-progress':'checkin-year-progress',kind==='monthly'?'checkin-month-progress-bar':'checkin-year-progress-bar');
+    }
+    function financialCheckInFormatSummary(prefix,metrics){
+      const set=(suffix,value)=>{const el=document.getElementById(prefix+suffix);if(el)el.textContent=formatFinancial(value);};
+      set('income',metrics.income);set('expenses',metrics.expenses,true);set('debt',metrics.debtPayments);set('networth',financialCheckInCurrentNetWorth());
+    }
+    function renderFinancialCheckIn(){
+      const month=financialCheckInPeriod(),year=financialCheckInYear();
+      const [yy,mm]=month.split('-').map(Number);
+      const monthEnd=new Date(yy,mm,0).getDate();
+      const m=financialCheckInMetrics(`${month}-01`,`${month}-${String(monthEnd).padStart(2,'0')}`);
+      financialCheckInFormatSummary('checkin-month-',m);
+      const manual=m.unmatched.length;
+      const detail=document.getElementById('checkin-month-detail');
+      if(detail)detail.textContent=`${m.tx.length} recorded transactions · ${m.unmatched.length} unmatched transaction(s) · ${m.uncategorized.length} transaction(s) needing categorization · ${m.awaiting.length} account(s) awaiting statement review. Debt payments include principal and interest; interest is included in expenses, principal is not. Internal transfers are excluded from income and expenses. Net worth uses current account balances, not historical balances for ${month}.`;
+      financialCheckInRenderChecklist('monthly',month,'checkin-month-checklist','checkin-month-progress','checkin-month-progress-bar');
+      const y=financialCheckInMetrics(`${year}-01-01`,`${year}-12-31`);
+      financialCheckInFormatSummary('checkin-year-',y);
+      const yd=document.getElementById('checkin-year-detail');
+      if(yd)yd.textContent=`${y.tx.length} recorded transactions · ${y.unmatched.length} unmatched transaction(s) · ${y.uncategorized.length} transaction(s) needing categorization. Current net worth uses today's account balances; historical December 31 balances are not inferred.`;
+      financialCheckInRenderChecklist('yearly',String(year),'checkin-year-checklist','checkin-year-progress','checkin-year-progress-bar');
+      renderFinancialCheckInSnapshotHistory();
+    }
+    function switchFinancialCheckInView(view){
+      ['monthly','yearly','history'].forEach(name=>{
+        const panel=document.getElementById(`checkin-view-${name}`),tab=document.getElementById(`checkin-tab-${name}`);
+        if(panel)panel.classList.toggle('hidden',name!==view);
+        if(tab){tab.classList.toggle('bg-indigo-600',name===view);tab.classList.toggle('text-white',name===view);tab.classList.toggle('text-gray-500',name!==view);}
+      });
+      renderFinancialCheckIn();
+    }
+    function renderFinancialCheckInSnapshotHistory(){
+      const host=document.getElementById('checkin-snapshot-history');if(!host)return;
+      const monthly=Object.values(state.monthlyCloseSnapshots||{}).map(s=>({...s,snapshotKind:'Monthly'}));
+      const yearly=Object.values(state.yearEndSnapshots||{}).map(s=>({...s,snapshotKind:'Yearly'}));
+      const all=[...monthly,...yearly].sort((a,b)=>String(b.closedAt||'').localeCompare(String(a.closedAt||'')));
+      host.innerHTML=all.length?all.map(s=>{
+        const period=s.period||s.year||'Period unavailable';
+        const saved=s.closedAt?new Date(s.closedAt).toLocaleString():'Save date unavailable';
+        const summary=[s.income!=null?`Income ${formatFinancial(s.income)}`:'',s.expenses!=null?`Expenses ${formatFinancial(s.expenses)}`:'',s.unmatched!=null?`${s.unmatched} unmatched`:''].filter(Boolean).join(' · ');
+        return `<div class="rounded-xl border border-gray-200 dark:border-gray-800 p-3"><div class="flex flex-wrap justify-between gap-2"><strong class="text-sm">${s.snapshotKind} · ${escapeHtml(String(period))}</strong><span class="text-xs text-gray-500">${escapeHtml(saved)}</span></div><p class="text-xs text-gray-500 mt-1">${escapeHtml(summary||'Saved snapshot; detailed figures are retained in the original record.')}</p><p class="text-xs text-gray-500 mt-1">Status: ${escapeHtml(String(s.status||'saved'))}</p></div>`;
+      }).join(''):'<p class="text-sm text-gray-500">No saved snapshots were found.</p>';
+    }
+function switchTab(tabId, isBackNavigation=false) {
       if(!document.getElementById(`tab-${tabId}`)) return;
       if(!isBackNavigation && finhubCurrentTab!==tabId) {
         if(finhubCurrentTab && document.getElementById(`tab-${finhubCurrentTab}`)) finhubTabHistory.push(finhubCurrentTab);
@@ -4634,12 +4787,9 @@ Bonus" rows="4"></textarea></div>
       if (tabId === 'dashboard') renderDashboard();
       if (tabId === 'accounts') renderAccountsPage();
       if (tabId === 'reports') {
-        renderDataHealth(); renderMonthlyClose(); renderYearEndClose();
-        const closeGrid=document.getElementById('financial-close-period-blocks');
-        const closeHost=document.getElementById('reports-financial-close');
-        if(closeGrid)initDraggableSections(closeGrid);
-        if(closeHost)initDraggableSections(closeHost);
+        renderDataHealth();
       }
+      if (tabId === 'financial-checkin') { const m=document.getElementById('checkin-month-picker'); if(m&&!m.value)m.value=new Date().toISOString().slice(0,7); const y=document.getElementById('checkin-year-picker'); if(y&&!y.value)y.value=new Date().getFullYear(); switchFinancialCheckInView('monthly'); }
       if (tabId === 'biweekly') renderZbbPlanner();
       if (tabId === 'calendar') renderCalendar();
       if (tabId === 'joint') renderJointAppView();
@@ -13565,7 +13715,7 @@ function openTransactionModal(requestedEditId = null) {
     function exportLedgerCsv(){const table=document.querySelector('#ledger-table-container table');if(!table)return;const rows=[...table.querySelectorAll('tr')].filter(r=>r.cells.length);const csv=rows.map(r=>[...r.cells].map(c=>'"'+c.innerText.trim().replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='FinHub_Expense_Tracker.csv';a.click();URL.revokeObjectURL(url);}
     function exportFinancialWorkbook(){
       if(!window.XLSX){alert('Excel export library is unavailable. Check your internet connection and try again.');return;}
-      const wb=XLSX.utils.book_new(),txs=state.transactions||[],year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear();
+      const wb=XLSX.utils.book_new(),txs=state.transactions||[],year=Number(document.getElementById('checkin-year-picker')?.value)||new Date().getFullYear();
       const months=Array.from({length:12},(_,i)=>`${year}-${String(i+1).padStart(2,'0')}`),fmt=n=>Math.round((Number(n)||0)*100)/100;
       const incomeCats=new Set(),expenseCats=new Set();txs.forEach(t=>{if(String(t.date||'').slice(0,4)!==String(year))return;if(t.type==='Income')incomeCats.add(t.category||'Uncategorized');if(t.type==='Expense')expenseCats.add(t.category||'Uncategorized');});
       const makeMonthly=(title,cats,kind)=>{const rows=[[title,...months.map(m=>new Date(`${m}-01T12:00:00`).toLocaleString('en-CA',{month:'short'})),'TOTAL']];[...cats].sort().forEach(cat=>{const vals=months.map(m=>fmt(txs.filter(t=>String(t.date||'').startsWith(m)&&t.type===kind&&(t.refundOfTransactionId?(t.refundOriginalCategory||t.category||'Uncategorized'):(t.category||'Uncategorized'))===cat).reduce((a,t)=>a+(kind==='Expense'?getNetExpenseAmount(t):(Number(t.amount)||0)),0)));rows.push([cat,...vals,`=SUM(B${rows.length+1}:M${rows.length+1})`]);});rows.push([`TOTAL ${kind.toUpperCase()}`,...months.map((m,i)=>`=SUM(${String.fromCharCode(66+i)}2:${String.fromCharCode(66+i)}${rows.length})`),'=SUM(B'+(rows.length+1)+':M'+(rows.length+1)+')']);return rows;};
@@ -13719,22 +13869,7 @@ function openTransactionModal(requestedEditId = null) {
         return `<div class="rounded-xl border p-3 flex flex-col justify-between gap-2 bg-white dark:bg-gray-900"><div class="flex items-start justify-between gap-3"><div class="min-w-0"><strong>${name}</strong><p class="text-gray-500 mt-1">${desc}</p><p class="text-[10px] text-gray-400 mt-1">${action}</p></div><span class="font-bold whitespace-nowrap ${count?'text-amber-600':'text-emerald-600'}">${count} ${count?'to review':'clear'}</span></div>${actionHtml}</div>`;
       }).join('');
     }
-    function closePeriod(){return document.getElementById('monthly-close-period')?.value||new Date().toISOString().slice(0,7);}
-    function closeMetrics(period){const tx=(state.transactions||[]).filter(t=>String(t.date||'').slice(0,7)===period),accounts=(state.accounts||[]).filter(a=>!a.archived),unrec=accounts.filter(a=>!a.lastReconciledAt||String(a.lastReconciledAt).slice(0,7)!==period),income=tx.filter(t=>t.type==='Income'&&t.category!=='Transfer').reduce((s,t)=>s+(Number(t.amount)||0),0),expense=tx.reduce((s,t)=>s+getExpenseReportingComponents(t).reduce((a,c)=>a+(Number(c.amount)||0),0),0),unmatched=tx.filter(t=>!t.reconciled&&!t.statementMatchId&&!t.statementMatchGroupId),outstandingBills=(state.calendarBills||[]).filter(b=>!b.paid&&!b.recurrenceOccurrenceDeleted&&String(b.date||'').slice(0,7)===period);return {tx,accounts,unrec,income,expense,unmatched,outstandingBills};}
-    const MONTH_CLOSE_TASKS=[['review_income_expenses','Review monthly income and expenses for completeness'],['review_budget','Compare budget actuals with the paycheque plan'],['review_accounts','Reconcile bank and credit card accounts; investigate differences'],['review_unmatched','Review unmatched or unreconciled transactions'],['review_bills','Review paid and outstanding bills and scheduled income'],['review_debt','Review debt balances, principal payments and interest'],['review_savings','Review savings contributions and sinking-fund balances'],['review_transfers','Review transfers, refunds and unusual or duplicate entries'],['review_carryforward','Confirm variable pool carry-forward/reset decisions'],['backup','Save a current JSON backup']];
-    function setMonthlyCloseTask(key,checked){const p=closePeriod();state.monthlyCloseChecklist=state.monthlyCloseChecklist||{};state.monthlyCloseChecklist[p]=state.monthlyCloseChecklist[p]||{};state.monthlyCloseChecklist[p][key]=!!checked;saveData();renderMonthlyClose();}
-    function openCloseUnmatched(){window.dataHealthTransactionIds=null;window.closeLedgerFilterPeriod=closePeriod();window.closeLedgerFilterOnlyUnmatched=true;ledgerFilterSelections={};ledgerFilterSearchTerms={};const p=document.getElementById('ledger-period-preset');if(p)p.value='all';switchTab('ledger');const host=document.getElementById('ledger-table-container');if(host)host.scrollIntoView({behavior:'smooth',block:'start'});}
-    function clearCloseTransactionFilter(){window.closeLedgerFilterPeriod=null;window.closeLedgerFilterOnlyUnmatched=false;window.dataHealthTransactionIds=null;const p=document.getElementById('ledger-period-preset');if(p)p.value='current';renderLedger();}
-    function renderMonthlyClose(){const p=closePeriod(),d=closeMetrics(p),sum=document.getElementById('monthly-close-summary'),list=document.getElementById('monthly-close-checklist');if(!sum||!list)return;sum.innerHTML=[['Transactions',d.tx.length],['Income',formatFinancial(d.income)],['Expenses',formatFinancial(d.expense)],['Unmatched',`<button onclick="openCloseUnmatched()" class="text-indigo-600 dark:text-indigo-300 underline font-bold">${d.unmatched.length} · View transactions</button>`],['Outstanding bills / income',d.outstandingBills.length]].map(x=>`<div class="p-2 bg-gray-50 dark:bg-gray-950 rounded"><div class="text-gray-500">${x[0]}</div><b>${x[1]}</b></div>`).join('');const flags=state.monthlyCloseChecklist?.[p]||{};const rows=[`<div class="p-2 border rounded flex items-center justify-between gap-2"><span>Account reconciliation: ${d.unrec.length} account(s) not reconciled in this month</span><span class="font-semibold ${d.unrec.length?'text-amber-600':'text-emerald-600'}">${d.unrec.length?'Review':'Clear'}</span></div>`,`<div class="p-2 border rounded flex items-center justify-between gap-2"><span>Transaction review: <button onclick="openCloseUnmatched()" class="text-indigo-600 dark:text-indigo-300 underline">${d.unmatched.length} unmatched transaction(s) · Open list</button></span><span class="font-semibold ${d.unmatched.length?'text-amber-600':'text-emerald-600'}">${d.unmatched.length?'Review':'Clear'}</span></div>`,...MONTH_CLOSE_TASKS.map(([key,label])=>`<label class="p-2 border rounded flex items-center gap-2"><input type="checkbox" ${flags[key]?'checked':''} onchange="setMonthlyCloseTask('${key}',this.checked)" class="accent-indigo-600"><span>${label}</span></label>` )];list.innerHTML=rows.join('');const snap=state.monthlyCloseSnapshots?.[p];const reopen=document.getElementById('monthly-close-reopen');if(reopen)reopen.classList.toggle('hidden',!snap||snap.status==='reopened');renderMonthlyCloseHistory();}
-    function completeMonthlyClose(){const p=closePeriod(),d=closeMetrics(p),flags=state.monthlyCloseChecklist?.[p]||{},missing=MONTH_CLOSE_TASKS.filter(([k])=>!flags[k]);if((d.unrec.length||d.unmatched.length||missing.length)&&!confirm(`${d.unrec.length} account(s), ${d.unmatched.length} transaction(s), and ${missing.length} checklist item(s) remain open. Save as incomplete?`))return;if(!confirm(`Save the ${p} month-end snapshot? This does not lock transactions.`))return;state.monthlyCloseSnapshots=state.monthlyCloseSnapshots||{};state.monthlyCloseSnapshots[p]={period:p,closedAt:new Date().toISOString(),status:d.unrec.length||d.unmatched.length||missing.length?'incomplete':'completed',income:d.income,expenses:d.expense,transactionCount:d.tx.length,unmatched:d.unmatched.length,checklist:{...flags},outstandingItems:d.outstandingBills.map(b=>({id:b.id,description:b.desc,date:b.date,amount:Number(b.amount)||0,type:b.type})),accountBalances:d.accounts.map(a=>({id:a.id,name:a.name,type:a.type,balance:Number(a.balance)||0,statementBalance:a.actualBalance??null}))};saveData();renderMonthlyClose();alert('Monthly snapshot saved.');}
-    function reopenMonthlyClose(){const p=closePeriod(),snap=state.monthlyCloseSnapshots?.[p];if(!snap)return;if(!confirm(`Reopen ${p}? The existing snapshot will be retained as a prior snapshot record and the month can be reviewed again.`))return;state.monthlyCloseSnapshots[p]={...snap,status:'reopened',reopenedAt:new Date().toISOString(),priorSnapshot:{...snap}};saveData();renderMonthlyClose();}
-    function renderMonthlyCloseHistory(){const el=document.getElementById('monthly-close-history');if(!el)return;const items=Object.values(state.monthlyCloseSnapshots||{}).sort((a,b)=>b.period.localeCompare(a.period));el.innerHTML=items.length?'<b>Saved monthly snapshots</b><div class="mt-1 space-y-1">'+items.map(x=>`<div>${escapeHtml(x.period)}: <strong>${escapeHtml(x.status)}</strong> · ${new Date(x.closedAt).toLocaleDateString()}${x.reopenedAt?' · reopened '+new Date(x.reopenedAt).toLocaleDateString():''}</div>`).join('')+'</div>':'No monthly snapshots saved.';}
-    function yearEndMetrics(year){const prefix=String(year),tx=(state.transactions||[]).filter(t=>String(t.date||'').startsWith(prefix)),accounts=(state.accounts||[]).filter(a=>!a.archived),months=Array.from({length:12},(_,i)=>`${prefix}-${String(i+1).padStart(2,'0')}`),snapshots=state.monthlyCloseSnapshots||{},closed=months.filter(m=>snapshots[m]&&snapshots[m].status==='completed').length,income=tx.filter(t=>t.type==='Income'&&t.category!=='Transfer').reduce((s,t)=>s+(Number(t.amount)||0),0),expenses=tx.reduce((s,t)=>s+getExpenseReportingComponents(t).reduce((a,c)=>a+(Number(c.amount)||0),0),0),unmatched=tx.filter(t=>!t.reconciled&&!t.statementMatchId&&!t.statementMatchGroupId).length;return {tx,accounts,months,closed,income,expenses,unmatched};}
-    function renderYearEndClose(){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear(),d=yearEndMetrics(year),sum=document.getElementById('year-end-summary'),list=document.getElementById('year-end-checklist');if(!sum||!list)return;sum.innerHTML=[['Transactions',d.tx.length],['Income',formatFinancial(d.income)],['Expenses',formatFinancial(d.expenses)],['Monthly closes',`${d.closed}/12 completed`]].map(x=>`<div class="p-2 bg-gray-50 dark:bg-gray-950 rounded"><div class="text-gray-500">${x[0]}</div><b>${x[1]}</b></div>`).join('');list.innerHTML=[`Monthly close coverage: ${d.closed} of 12 months have completed snapshots`,`Unmatched transactions: ${d.unmatched} · <button onclick="openYearUnmatched(${year})" class="text-indigo-600 underline">View transactions</button>`,`Review annual income and expenses and compare the full-year budget with actual results`,`Review debt principal, interest, savings contributions and sinking-fund balances`,`Confirm December 31 balances for all active bank, credit card, loan and savings accounts`,`Review outstanding bills, scheduled income, transfers, refunds and unreconciled items`,`Compare year-end net worth with the previous year's snapshot`,`Save a full JSON backup before completing year-end`].map(x=>`<div class="p-2 border rounded">${x}</div>`).join('');const hist=document.getElementById('year-end-history'),snap=state.yearEndSnapshots?.[year],reopen=document.getElementById('year-end-reopen');if(reopen)reopen.classList.toggle('hidden',!snap||snap.status==='reopened');if(hist){const items=Object.values(state.yearEndSnapshots||{}).sort((a,b)=>Number(b.year)-Number(a.year));hist.innerHTML=items.length?'<b>Saved year-end snapshots</b><div class="mt-1 space-y-1">'+items.map(x=>`<div>${escapeHtml(String(x.year))}: <strong>${escapeHtml(x.status)}</strong> · ${new Date(x.closedAt).toLocaleDateString()}${x.reopenedAt?' · reopened '+new Date(x.reopenedAt).toLocaleDateString():''}${x.reopenReason?' · '+escapeHtml(x.reopenReason):''}</div>`).join('')+'</div>':'No year-end snapshots saved.';}}
-    function openYearUnmatched(year){window.dataHealthTransactionIds=null;window.closeLedgerFilterPeriod=String(year);window.closeLedgerFilterOnlyUnmatched=true;ledgerFilterSelections={};ledgerFilterSearchTerms={};const p=document.getElementById('ledger-period-preset');if(p)p.value='all';switchTab('ledger');const host=document.getElementById('ledger-table-container');if(host)host.scrollIntoView({behavior:'smooth',block:'start'});}
-    function reopenYearEndClose(){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear(),snap=state.yearEndSnapshots?.[year];if(!snap)return;const reason=prompt(`Why are you reopening ${year}? This reason will be retained with the close history.`);if(reason===null)return;if(!reason.trim()){alert('Enter a reason to reopen the year.');return;}if(!confirm(`Reopen ${year}? The original snapshot will be retained and the year can be reviewed again.`))return;state.yearEndSnapshots[year]={...snap,status:'reopened',reopenedAt:new Date().toISOString(),reopenReason:reason.trim(),priorSnapshot:{...snap}};saveData();renderYearEndClose();}
-    function completeYearEndClose(){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear(),d=yearEndMetrics(year);if(!confirm(`${d.closed}/12 monthly closes completed and ${d.unmatched} transactions are unmatched. Save the ${year} year-end snapshot anyway?`))return;state.yearEndSnapshots=state.yearEndSnapshots||{};state.yearEndSnapshots[year]={year,closedAt:new Date().toISOString(),status:d.closed===12&&!d.unmatched?'completed':'incomplete',income:d.income,expenses:d.expenses,transactionCount:d.tx.length,unmatched:d.unmatched,monthlyCloseCoverage:d.closed,accountBalances:d.accounts.map(a=>({id:a.id,name:a.name,type:a.type,balance:Number(a.balance)||0,statementBalance:a.actualBalance??null})),outstandingItems:(state.calendarBills||[]).filter(b=>!b.paid&&!b.recurrenceOccurrenceDeleted&&String(b.date||'').startsWith(String(year))).map(b=>({id:b.id,description:b.desc,date:b.date,amount:Number(b.amount)||0,type:b.type}))};saveData();renderYearEndClose();alert('Year-end snapshot saved. Continue in the same FinHub file; do not re-enter opening balances.');}
-    document.addEventListener('DOMContentLoaded',()=>{['debt-simulator-details','data-health-details'].forEach(id=>{const el=document.getElementById(id);if(!el)return;const key=finhubStorageKey('collapse-'+id);const saved=localStorage.getItem(key);if(saved!==null)el.open=saved==='open';el.addEventListener('toggle',()=>localStorage.setItem(key,el.open?'open':'closed'));});const up=document.getElementById('dashboard-upcoming-month');if(up&&!up.value){const n=new Date();up.value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}`;}renderDashboardUpcoming();const m=document.getElementById('monthly-close-period');if(m&&!m.value)m.value=new Date().toISOString().slice(0,7);const y=document.getElementById('year-end-period');if(y&&!y.value)y.value=new Date().getFullYear();renderMonthlyClose();renderYearEndClose();renderDataHealth();const period=document.getElementById('ledger-period-preset');if(period)period.value='current';applyLedgerColumns();});
+    document.addEventListener('DOMContentLoaded',()=>{['debt-simulator-details','data-health-details'].forEach(id=>{const el=document.getElementById(id);if(!el)return;const key=finhubStorageKey('collapse-'+id);const saved=localStorage.getItem(key);if(saved!==null)el.open=saved==='open';el.addEventListener('toggle',()=>localStorage.setItem(key,el.open?'open':'closed'));});const up=document.getElementById('dashboard-upcoming-month');if(up&&!up.value){const n=new Date();up.value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}`;}renderDashboardUpcoming();renderDataHealth();const period=document.getElementById('ledger-period-preset');if(period)period.value='current';applyLedgerColumns();});
 
 
     function initializeRemainingSectionCollapses() {
@@ -13792,22 +13927,26 @@ function openTransactionModal(requestedEditId = null) {
         'renderDebtPaymentHistory','renderZbbPlanner','renderZbbFundingTracker',
         'renderJointAppView','renderSettings','renderStatementPreview',
         'renderStatementBalanceCheck','renderTransactionAnalytics',
-        'renderBudget','renderReports','renderIncomeExpenseReport',
+        
         'renderAccountsPage','renderAvailableToSpend','renderMonthlyOverviewPage',
-        'renderUpcomingCalendarList','renderDebtUpcomingBills','renderDataHealth',
-        'renderMonthlyClose','renderYearEndClose'
+        'renderUpcomingCalendarList','renderDebtUpcomingBills','renderDataHealth'
       ];
-      try { if (typeof refreshTransactionEntryView === 'function') refreshTransactionEntryView(); } catch (error) { console.warn('FinHub transaction refresh warning:', error); }
-      refreshers.forEach(name => {
-        try { if (typeof window[name] === 'function') window[name](); }
-        catch (error) { console.warn('FinHub refresh warning (' + name + '):', error); }
+      const errors=[];
+      try { if (typeof refreshTransactionEntryView === 'function') refreshTransactionEntryView(); } catch (error) { errors.push('Transaction entry'); console.warn('FinHub transaction refresh warning:',error); }
+      refreshers.forEach(name=>{
+        try { if(typeof window[name]==='function') window[name](); }
+        catch(error){errors.push(name);console.warn('FinHub refresh warning ('+name+'):',error);}
       });
-      try { if (typeof updateLedgerSelectionUI === 'function') updateLedgerSelectionUI(); } catch (_) {}
-      const btn = document.getElementById('finhub-global-refresh');
-      if (btn) {
-        const label = btn.querySelector('[data-refresh-label]');
-        if (label) label.textContent = 'Refreshed';
-        window.setTimeout(() => { if (label) label.textContent = 'Refresh'; }, 1200);
+      try { if(typeof updateLedgerSelectionUI==='function') updateLedgerSelectionUI(); } catch(error){errors.push('Ledger selection');}
+      try { if(document.getElementById('tab-financial-checkin')) renderFinancialCheckIn(); }
+      catch(error){errors.push('Financial Check-In');console.warn('FinHub Check-In refresh warning:',error);}
+      const btn=document.getElementById('finhub-global-refresh');
+      if(btn){
+        const label=btn.querySelector('[data-refresh-label]');
+        if(label)label.textContent=errors.length?'Refresh issues':'Refreshed';
+        if(window.finhubRefreshFeedbackTimer)clearTimeout(window.finhubRefreshFeedbackTimer);
+        window.finhubRefreshFeedbackTimer=window.setTimeout(()=>{if(label)label.textContent='Refresh FinHub';btn.setAttribute('aria-label','Refresh displayed FinHub information');},1600);
+        btn.setAttribute('aria-label',errors.length?'Refresh completed with some sections needing attention':'FinHub information refreshed');
       }
     }
 
@@ -15633,7 +15772,7 @@ button.fh-semantic-button:focus-visible { outline:2px solid var(--fh-action-prim
   /* Accepted desktop icon rail: brand first, global controls directly beneath it, then page icons. */
   #finhub-sidebar .finhub-sidebar-header { flex-direction:column !important; flex-wrap:nowrap !important; align-items:center !important; justify-content:flex-start !important; gap:8px !important; padding:10px 4px !important; }
   #finhub-sidebar .sidebar-brand-row { width:100% !important; flex:0 0 auto !important; justify-content:center !important; }
-  #finhub-sidebar .sidebar-brand-actions { display:flex !important; flex:0 0 auto !important; flex-direction:column !important; justify-content:center !important; align-items:center !important; gap:5px !important; }
+  #finhub-sidebar .sidebar-brand-actions { display:flex !important; flex:0 0 auto !important; flex-direction:row !important; justify-content:center !important; gap:1px !important; }
   #finhub-sidebar .sidebar-brand-actions button[onclick="togglePrivacyBlur()"],
   #finhub-sidebar .sidebar-brand-actions button[onclick="toggleTheme()"] { width:29px !important; height:30px !important; min-width:29px !important; }
 }
