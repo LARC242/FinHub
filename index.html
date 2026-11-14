@@ -2136,247 +2136,6 @@ body[data-finhub-theme] .finhub-mobile-global-controls button:focus-visible {
 #tx-refund-original-table .refund-col-resize:hover{border-right-color:var(--fh-primary,#64748b)!important;border-right-width:3px!important}
 #tx-refund-original-table tbody tr[aria-checked="true"]{outline:1px solid var(--fh-primary,#64748b);outline-offset:-1px}
 </style>
-
-<style id="finhub-expense-column-flexibility-v9">
-  /* Wider invisible grab zone, restrained visible divider, and clear hover feedback. */
-  #ledger-table-container .ledger-resize-handle {
-    width:14px !important;
-    border-right:2px solid rgba(148,163,184,.38) !important;
-    background:linear-gradient(90deg,transparent 68%,rgba(148,163,184,.10) 68%) !important;
-    cursor:col-resize !important;
-  }
-  #ledger-table-container .ledger-resize-handle:hover,
-  #ledger-table-container .ledger-resize-handle[data-dragging="true"] {
-    border-right-color:var(--fh-primary,#64748b) !important;
-    background:rgba(148,163,184,.14) !important;
-  }
-  /* Text-heavy fields adapt to the width selected by the user instead of forcing expansion. */
-  #ledger-table-container tbody#ledger-rows td[data-label="Vendor"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Description"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Bucket"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Subcategory"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Account"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Import Source"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Reconciliation Status"] {
-    white-space:normal !important;
-    overflow-wrap:anywhere !important;
-    word-break:normal !important;
-    text-overflow:clip !important;
-    vertical-align:top;
-  }
-  /* Keep compact numeric and date fields on one line. */
-  #ledger-table-container tbody#ledger-rows td[data-label="Date"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Type"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Amount"],
-  #ledger-table-container tbody#ledger-rows td[data-label="Running Balance"] {
-    white-space:nowrap !important;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-</style>
-
-
-<style id="finhub-light-mode-theme-cohesion-v10">
-/* Light-mode theme cohesion: same surface hierarchy as Accounts, using each theme's own tokens. */
-html:not(.dark) body[data-finhub-theme] {
-  --fh-light-page:var(--fh-page,var(--bg-primary,#f4f6f8));
-  --fh-light-card:var(--fh-card,var(--surface-primary,#ffffff));
-  --fh-light-raised:var(--fh-surface,var(--surface-elevated,#f8fafc));
-  --fh-light-ink:var(--fh-ink,var(--text-primary,#243447));
-  --fh-light-muted:var(--fh-muted,var(--text-secondary,#64748b));
-  --fh-light-border:var(--fh-border,var(--border-primary,#dce5ef));
-  background-color:var(--fh-light-page) !important;
-  color:var(--fh-light-ink) !important;
-}
-html:not(.dark) body[data-finhub-theme] main,
-html:not(.dark) body[data-finhub-theme] .tab-content,
-html:not(.dark) body[data-finhub-theme] .tab-content > section,
-html:not(.dark) body[data-finhub-theme] [id^="tab-"] {
-  background-color:var(--fh-light-page) !important;
-  background-image:none !important;
-  color:var(--fh-light-ink) !important;
-}
-/* Main page headers stay transparent; avoid stray coloured banner strips. */
-html:not(.dark) body[data-finhub-theme] .tab-content > div:first-child,
-html:not(.dark) body[data-finhub-theme] #tab-dashboard > div:first-child,
-html:not(.dark) body[data-finhub-theme] #tab-debt > div:first-child {
-  background-color:transparent !important;
-  background-image:none !important;
-  color:var(--fh-light-ink) !important;
-}
-/* Main cards and nested boxes use the same Accounts-page fill and border. */
-html:not(.dark) body[data-finhub-theme] .tab-content :is(
-  .monthly-kpi,.monthly-panel,.account-card,.accounts-card,.account-summary-card,
-  .report-card,.reports-card,.report-tile,.dashboard-widget,.debt-card,
-  .debt-summary-card,.debt-simulator-card,.budget-card,.planner-card,
-  .expense-card,.monthly-overview-card,.global-collapsible-section,
-  .global-collapsible-summary,
-  .rounded-lg.border,.rounded-xl.border,.rounded-2xl.border,
-  .border.rounded-lg,.border.rounded-xl,.border.rounded-2xl
-) {
-  background-color:var(--fh-light-card) !important;
-  background-image:none !important;
-  color:var(--fh-light-ink) !important;
-  border-color:var(--fh-light-border) !important;
-}
-html:not(.dark) body[data-finhub-theme] .tab-content :is(
-  .monthly-kpi,.monthly-panel,.account-card,.accounts-card,.account-summary-card,
-  .report-card,.reports-card,.report-tile,.dashboard-widget,.debt-card,
-  .debt-summary-card,.debt-simulator-card,.budget-card,.planner-card,
-  .expense-card,.monthly-overview-card,.global-collapsible-section
-) :is(h1,h2,h3,h4,strong,label) {
-  color:var(--fh-light-ink) !important;
-}
-html:not(.dark) body[data-finhub-theme] .tab-content :is(
-  .monthly-kpi,.monthly-panel,.account-card,.accounts-card,.account-summary-card,
-  .report-card,.reports-card,.report-tile,.dashboard-widget,.debt-card,
-  .debt-summary-card,.debt-simulator-card,.budget-card,.planner-card,
-  .expense-card,.monthly-overview-card,.global-collapsible-section
-) :is(.text-gray-400,.text-gray-500,.text-gray-600,.text-slate-400,.text-slate-500,.text-slate-600) {
-  color:var(--fh-light-muted) !important;
-}
-html:not(.dark) body[data-finhub-theme] .tab-content :is(input,select,textarea) {
-  background-color:var(--fh-light-raised) !important;
-  color:var(--fh-light-ink) !important;
-  border-color:var(--fh-light-border) !important;
-}
-html:not(.dark) body[data-finhub-theme] .tab-content :is(th,td) {
-  border-color:var(--fh-light-border) !important;
-}
-
-/* Eliminate stacked/overlaid gradients on action buttons; theme colour is a single solid fill. */
-html:not(.dark) body[data-finhub-theme] :is(
-  button.fh-semantic-button.fh-btn-primary,button.finhub-btn-primary,
-  button.finhub-action-save,.finhub-btn-primary,.finhub-action-save,
-  button.theme-bg,button.bg-indigo-600,button.bg-violet-600,button.bg-purple-600
-) {
-  background:var(--fh-primary,var(--accent-primary,#526579)) !important;
-  background-image:none !important;
-  border:1px solid var(--fh-primary,var(--accent-primary,#526579)) !important;
-  color:#fff !important;
-  box-shadow:0 2px 5px rgba(20,30,45,.14) !important;
-  text-shadow:none !important;
-}
-html:not(.dark) body[data-finhub-theme] :is(
-  button.fh-semantic-button.fh-btn-primary,button.finhub-btn-primary,
-  button.finhub-action-save,.finhub-btn-primary,.finhub-action-save,
-  button.theme-bg,button.bg-indigo-600,button.bg-violet-600,button.bg-purple-600
-):hover:not(:disabled) {
-  background:color-mix(in srgb,var(--fh-primary,var(--accent-primary,#526579)) 82%,#000 18%) !important;
-  background-image:none !important;
-  border-color:color-mix(in srgb,var(--fh-primary,var(--accent-primary,#526579)) 82%,#000 18%) !important;
-}
-/* Save is the most important confirmation action: stronger contrast and a clear outline. */
-html:not(.dark) body[data-finhub-theme] :is(button.finhub-action-save,button.fh-account-save,.finhub-action-save) {
-  background:color-mix(in srgb,var(--fh-primary,var(--accent-primary,#526579)) 78%,#000 22%) !important;
-  background-image:none !important;
-  border:2px solid color-mix(in srgb,var(--fh-primary,var(--accent-primary,#526579)) 78%,#000 22%) !important;
-  color:#fff !important;
-  font-weight:750 !important;
-  box-shadow:0 2px 7px rgba(20,30,45,.22),0 0 0 1px rgba(255,255,255,.55) inset !important;
-}
-html:not(.dark) body[data-finhub-theme] :is(button.finhub-action-save,button.fh-account-save,.finhub-action-save):hover:not(:disabled) {
-  background:color-mix(in srgb,var(--fh-primary,var(--accent-primary,#526579)) 68%,#000 32%) !important;
-  border-color:color-mix(in srgb,var(--fh-primary,var(--accent-primary,#526579)) 68%,#000 32%) !important;
-}
-html:not(.dark) body[data-finhub-theme] :is(
-  button.fh-semantic-button.fh-btn-primary,button.finhub-btn-primary,
-  button.finhub-action-save,.finhub-btn-primary,.finhub-action-save
-):focus-visible {
-  outline:3px solid color-mix(in srgb,var(--fh-primary,var(--accent-primary,#526579)) 45%,transparent) !important;
-  outline-offset:3px !important;
-}
-</style>
-
-<style id="finhub-expense-date-column-wrap-v10">
-/* Date is a text column too: allow dates to break when the user narrows the column. */
-#ledger-table-container thead th[data-label="Date"],
-#ledger-table-container tbody#ledger-rows td[data-label="Date"] {
-  white-space:normal !important;
-  overflow-wrap:anywhere !important;
-  word-break:normal !important;
-  text-overflow:clip !important;
-  min-width:0 !important;
-}
-#ledger-table-container tbody#ledger-rows td[data-label="Date"] {
-  line-height:1.25 !important;
-  vertical-align:top !important;
-}
-</style>
-
-
-<style id="finhub-settings-header-focus-bar-fix-v11">
-/* Settings disclosure headers: remove the theme-pink inset stripe.
-   Keep a subtle outside focus indicator for keyboard accessibility. */
-#tab-settings > details > summary:focus,
-#tab-settings > details > summary:focus-visible,
-#tab-settings details[id^="settings-group-"] > summary:focus,
-#tab-settings details[id^="settings-group-"] > summary:focus-visible {
-  outline:2px solid var(--fh-border,var(--border-primary,#cbd5e1)) !important;
-  outline-offset:3px !important;
-  box-shadow:none !important;
-}
-/* Prevent pseudo-element accent bars from appearing on any settings group header. */
-#tab-settings > details > summary::before,
-#tab-settings > details > summary::after,
-#tab-settings details[id^="settings-group-"] > summary::before {
-  background-image:none !important;
-  box-shadow:none !important;
-}
-</style>
-
-
-<style id="finhub-year-end-header-match-monthly-v12">
-/* Year-End Review uses the same native disclosure header and layout as Monthly Review. */
-html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-summary,
-html.dark body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-summary {
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  gap:1rem !important;
-  min-height:5.1rem !important;
-  padding:1rem 1.25rem !important;
-  border-radius:.9rem !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-summary > span:first-child,
-html.dark body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-summary > span:first-child {
-  flex:0 0 235px !important;
-  font-size:1.15rem !important;
-  font-weight:750 !important;
-  color:var(--fh-ink,var(--text-primary,#243447)) !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-description,
-html.dark body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-description {
-  flex:1 1 auto !important;
-  color:var(--fh-muted,var(--text-secondary,#64748b)) !important;
-  font-size:1rem !important;
-  font-weight:500 !important;
-  line-height:1.45 !important;
-}
-@media (max-width:640px) {
-  #checkin-panel-yearly .global-collapsible-summary > span:first-child {
-    flex-basis:auto !important;
-  }
-}
-</style>
-
-
-<style id="finhub-checkin-copy-and-interaction-polish-v13">
-#tab-financial-checkin #checkin-panel-history table th,
-#tab-financial-checkin #checkin-panel-history table td { vertical-align:top; }
-#tab-financial-checkin #checkin-panel-history table td:last-child { white-space:nowrap; }
-#tab-financial-checkin #monthly-close-checklist > div,
-#tab-financial-checkin #year-end-checklist > div { min-width:0; }
-#tab-financial-checkin #monthly-close-checklist label,
-#tab-financial-checkin #year-end-checklist label { line-height:1.45; }
-@media(max-width:640px) {
-  #tab-financial-checkin #monthly-close-checklist > div,
-  #tab-financial-checkin #year-end-checklist > div { align-items:flex-start; }
-  #tab-financial-checkin #monthly-close-checklist > div > button,
-  #tab-financial-checkin #year-end-checklist > div > button { margin-top:.1rem; }
-}
-</style>
-
 </head>
 <body class="bg-gray-100 dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col md:flex-row transition-colors duration-200 relative" id="app-body">
 <!-- UNDO TOAST NOTIFICATION -->
@@ -2495,13 +2254,13 @@ html.dark body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-desc
 <h3 class="font-bold text-md mb-3"><i class="fa-solid fa-piggy-bank text-rose-500 mr-2"></i>Debt Payments &amp; Savings</h3>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 <div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3"><div class="text-xs text-gray-500">Debt payments recorded</div><strong class="text-lg text-rose-600" id="mo-debt-payments">$ –</strong></div>
-<div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3"><div class="text-xs text-gray-500">Savings-tagged activity</div><strong class="text-lg text-emerald-600" id="mo-savings">$ –</strong></div>
+<div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3"><div class="text-xs text-gray-500">Savings contributions</div><strong class="text-lg text-emerald-600" id="mo-savings">$ –</strong></div>
 </div>
-<p class="text-xs text-gray-500 mt-3">Debt payments are based on recorded debt-payment transactions. Savings-tagged activity includes transactions whose category or subcategory contains “Savings”; transfers between accounts are excluded unless separately categorized that way.</p>
+<p class="text-xs text-gray-500 mt-3">Debt payments are based on recorded debt-payment transactions. Savings are based on transactions categorized as savings.</p>
 </div>
 <div class="dashboard-block bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-5" data-dashboard-block="cashflow-trend">
-<h3 class="font-bold text-md mb-3"><i class="fa-solid fa-chart-line text-cyan-500 mr-2"></i>Income &amp; Expense Trend</h3>
-<p class="text-xs text-gray-500 mb-3">Income and recognized expenses over the six months ending with the selected month. Green shows income; red shows expenses. The amount at right is operating surplus (income less recognized expenses), not total cash movement.</p>
+<h3 class="font-bold text-md mb-3"><i class="fa-solid fa-chart-line text-cyan-500 mr-2"></i>Cash Flow Trend</h3>
+<p class="text-xs text-gray-500 mb-3">Income and expenses over the six months ending with the selected month. Green shows income; red shows expenses. The amount at right is net cash flow.</p>
 <div class="space-y-2" id="mo-trend-list"></div>
 </div>
 <!-- NET WORTH TREND -->
@@ -2565,26 +2324,15 @@ html.dark body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-desc
 </div>
 <div id="checkin-panel-monthly" class="space-y-4">
 <div class="space-y-4" id="financial-checkin-workspace">
+<div><h3 class="text-lg font-bold">Monthly Review</h3><p class="text-xs text-gray-500 mt-1">A guided check to confirm your records, balances and plan for the next month.</p></div>
 <div class="grid grid-cols-1 gap-4" id="financial-close-period-blocks">
-<div class="space-y-3"><details class="global-collapsible-section rounded-2xl overflow-hidden" data-global-collapsible="true"><summary class="global-collapsible-summary"><span>Monthly Close</span><span class="global-collapsible-description">Review transactions, reconcile accounts and prepare for the next month.</span></summary><div class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3"><div class="flex flex-wrap justify-between gap-2"><div><p class="text-xs text-gray-500">Complete your monthly checks and save a record of your financial position. Closing does not lock transactions.</p></div><div class="flex gap-2"><input class="border rounded-lg px-2 py-1 text-xs" id="monthly-close-period" onchange="renderMonthlyClose()" type="month"/><button class="border rounded-lg px-3 py-1 text-xs" onclick="refreshMonthlyCloseReview()" type="button">Refresh review</button></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs" id="monthly-close-summary"></div><div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3 space-y-2"><div class="flex items-center justify-between text-sm font-semibold"><span id="monthly-close-progress-label">0 of 10 complete</span><span id="monthly-close-progress-percent">0%</span></div><div class="h-2.5 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div id="monthly-close-progress-bar" class="h-full rounded-full bg-teal-600" style="width:0%"></div></div></div><div class="space-y-2 text-xs" id="monthly-close-checklist"></div><div class="flex flex-wrap gap-2"><button class="px-3 py-2 bg-indigo-600 text-white rounded-lg text-xs" onclick="completeMonthlyClose()">Save monthly close snapshot</button><button class="hidden px-3 py-2 border rounded-lg text-xs" id="monthly-close-reopen" onclick="reopenMonthlyClose()">Reopen month</button></div><div class="text-xs text-gray-500" id="monthly-close-history"></div></div></details></div>
+<div class="space-y-3"><details class="global-collapsible-section rounded-2xl overflow-hidden" data-global-collapsible="true"><summary class="global-collapsible-summary"><span>Monthly Review</span><span class="global-collapsible-description">Review month-end activity and save a monthly snapshot.</span></summary><div class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3"><div class="flex flex-wrap justify-between gap-2"><div><p class="text-xs text-gray-500">Work through the checklist and save a snapshot. Closing does not lock transactions.</p></div><div class="flex gap-2"><input class="border rounded-lg px-2 py-1 text-xs" id="monthly-close-period" onchange="renderMonthlyClose()" type="month"/><button class="border rounded-lg px-3 py-1 text-xs" onclick="refreshMonthlyCloseReview()" type="button">Refresh review</button></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs" id="monthly-close-summary"></div><div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3 space-y-2"><div class="flex items-center justify-between text-sm font-semibold"><span id="monthly-close-progress-label">0 of 10 complete</span><span id="monthly-close-progress-percent">0%</span></div><div class="h-2.5 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div id="monthly-close-progress-bar" class="h-full rounded-full bg-teal-600" style="width:0%"></div></div></div><div class="space-y-2 text-xs" id="monthly-close-checklist"></div><div class="flex flex-wrap gap-2"><button class="px-3 py-2 bg-indigo-600 text-white rounded-lg text-xs" onclick="completeMonthlyClose()">Save monthly close snapshot</button><button class="hidden px-3 py-2 border rounded-lg text-xs" id="monthly-close-reopen" onclick="reopenMonthlyClose()">Reopen month</button></div><div class="text-xs text-gray-500" id="monthly-close-history"></div></div></details></div>
 </div></div>
-<div class="fh-reorderable-section rounded-xl" id="financial-close-data-health"><details class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3 fh-reorderable-section" data-fh-drag-ready="false" id="data-health-details" open=""><summary class="cursor-pointer list-none flex items-center justify-between gap-3"><span><strong class="text-sm">Data Quality Checks</strong><span class="block text-xs text-gray-500 mt-1">Find missing, unmatched or inconsistent records that may need attention.</span></span><i aria-hidden="true" class="fa-solid fa-chevron-down text-indigo-500 transition-transform"></i></summary><div class="pt-3"><div class="flex items-center justify-between gap-2 mb-3"><p class="text-xs text-gray-500">These read-only checks flag records for review; they do not change your data.</p><button class="border rounded-lg px-3 py-1.5 text-xs" onclick="renderDataHealth()" type="button">Run checks</button></div><div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs" id="data-health-results"></div></div></details></div>
+<div class="fh-reorderable-section rounded-xl" id="financial-close-data-health"><h4 class="font-semibold text-sm mb-2">Data Health &amp; Integrity</h4><details class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3 fh-reorderable-section" data-fh-drag-ready="false" id="data-health-details" open=""><summary class="cursor-pointer list-none flex items-center justify-between gap-3"><span><strong class="text-sm">Data Health &amp; Integrity</strong><span class="block text-xs text-gray-500 mt-1">Read-only checks for common data quality issues</span></span><i aria-hidden="true" class="fa-solid fa-chevron-down text-indigo-500 transition-transform"></i></summary><div class="pt-3"><div class="flex items-center justify-between gap-2 mb-3"><p class="text-xs text-gray-500">These checks flag records for review; they do not change your data.</p><button class="border rounded-lg px-3 py-1.5 text-xs" onclick="renderDataHealth()" type="button">Run checks</button></div><div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs" id="data-health-results"></div></div></details></div>
 </div>
 </div>
-<div id="checkin-panel-yearly" class="hidden space-y-4">
-<details class="global-collapsible-section rounded-2xl overflow-hidden" data-global-collapsible="true" data-section-collapse-ready="1" id="year-end-review-details">
-<summary class="global-collapsible-summary"><span>Year-End Review</span><span class="global-collapsible-description">Review the full year, confirm monthly close coverage and save a year-end snapshot.</span></summary>
-<div class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3" id="checkin-yearly-content">
-<div class="flex flex-wrap items-center justify-between gap-2"><div><h3 class="text-sm font-bold">Year-End Close</h3><p class="text-xs text-gray-500">Review annual activity, confirm all 12 monthly closes and save your year-end financial snapshot. Closing does not lock transactions.</p></div><div class="flex gap-2"><input class="border rounded-lg px-2 py-1 text-xs w-24" id="year-end-period" max="2200" min="2000" type="number"/><button class="border rounded-lg px-3 py-1 text-xs" onclick="refreshYearEndCloseReview()" type="button">Refresh review</button></div></div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs" id="year-end-summary"></div>
-<div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3 space-y-2"><div class="flex items-center justify-between text-sm font-semibold"><span id="year-end-progress-label">0 of 8 complete</span><span id="year-end-progress-percent">0%</span></div><div class="h-2.5 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div id="year-end-progress-bar" class="h-full rounded-full bg-teal-600" style="width:0%"></div></div></div>
-<div class="space-y-2 text-xs" id="year-end-checklist"></div>
-<div class="flex flex-wrap gap-2"><button class="px-3 py-2 bg-indigo-600 text-white rounded-lg text-xs" onclick="completeYearEndClose()">Save year-end snapshot</button><button class="hidden px-3 py-2 border rounded-lg text-xs" id="year-end-reopen" onclick="reopenYearEndClose()">Reopen year</button></div>
-<div class="text-xs text-gray-500" id="year-end-history"></div>
-</div>
-</details>
-</div>
-<div id="checkin-panel-history" class="hidden space-y-4"><div class="rounded-2xl border border-gray-200 dark:border-gray-800 p-4"><div class="mb-4"><h3 class="text-lg font-bold">Snapshot History</h3><p class="text-sm text-gray-500 mt-1">View saved monthly and year-end snapshots, check their status and reopen a period when corrections are needed.</p></div><div id="checkin-snapshot-history" class="overflow-x-auto"></div></div></div>
+<div id="checkin-panel-yearly" class="hidden space-y-4"><div class="rounded-2xl border border-gray-200 dark:border-gray-800 p-4 space-y-3"><div><h3 class="text-lg font-bold">Year-End Review</h3><p class="text-sm text-gray-500">Review the full year, confirm monthly close coverage and save a year-end snapshot.</p></div><div id="checkin-yearly-content"><div class="bg-white dark:bg-gray-900 rounded-2xl border p-4 space-y-3"><div class="flex flex-wrap items-center justify-between gap-2"><div><h3 class="text-sm font-bold">Year-End Close</h3><p class="text-xs text-gray-500">Review the year, work through the checklist and save a snapshot. Closing does not lock transactions.</p></div><div class="flex gap-2"><input class="border rounded-lg px-2 py-1 text-xs w-24" id="year-end-period" max="2200" min="2000" type="number"/><button class="border rounded-lg px-3 py-1 text-xs" onclick="refreshYearEndCloseReview()" type="button">Refresh review</button></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs" id="year-end-summary"></div><div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3 space-y-2"><div class="flex items-center justify-between text-sm font-semibold"><span id="year-end-progress-label">0 of 8 complete</span><span id="year-end-progress-percent">0%</span></div><div class="h-2.5 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden"><div id="year-end-progress-bar" class="h-full rounded-full bg-teal-600" style="width:0%"></div></div></div><div class="space-y-2 text-xs" id="year-end-checklist"></div><div class="flex flex-wrap gap-2"><button class="px-3 py-2 bg-indigo-600 text-white rounded-lg text-xs" onclick="completeYearEndClose()">Save year-end snapshot</button><button class="hidden px-3 py-2 border rounded-lg text-xs" id="year-end-reopen" onclick="reopenYearEndClose()">Reopen year</button></div><div class="text-xs text-gray-500" id="year-end-history"></div></div></div></div></div>
+<div id="checkin-panel-history" class="hidden space-y-4"><div class="rounded-2xl border border-gray-200 dark:border-gray-800 p-4"><h3 class="text-lg font-bold mb-3">Snapshot History</h3><div id="checkin-snapshot-history" class="overflow-x-auto"></div></div></div>
 </section>
 
 <!-- REPORTS -->
@@ -3287,7 +3035,7 @@ html.dark body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-desc
 </div>
 <!-- MODAL: ACCOUNT TRANSACTIONS DRAWER & SAFE DELETE -->
 <div class="fixed inset-0 bg-black/70 flex items-center justify-center p-4 hidden z-50" id="account-detail-modal">
-<div class="fh-account-drawer bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl w-full max-w-6xl h-[94vh] max-h-[94vh] overflow-hidden flex flex-col p-4 space-y-2 shadow-2xl">
+<div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl w-full max-w-6xl h-[94vh] max-h-[94vh] overflow-hidden flex flex-col p-4 space-y-2 shadow-2xl">
 <div class="flex justify-between items-center border-b border-gray-200 dark:border-gray-800 pb-3">
 <h3 class="text-lg font-bold" id="acc-detail-title">Account Transactions &amp; Settings</h3>
 <button class="text-gray-400 hover:text-gray-600" onclick="closeAccountDetailModal()"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -3295,12 +3043,15 @@ html.dark body[data-finhub-theme] #checkin-panel-yearly .global-collapsible-desc
 <details id="account-settings-summary" class="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950">
 <summary class="cursor-pointer px-3 py-2 text-xs font-semibold text-gray-500">Account settings &amp; balance summary</summary>
 <div class="p-3 pt-0 space-y-2">
-<div class="fh-account-actions">
-<div class="fh-account-actions-copy"><span>Account actions</span><small>Manage this account</small></div>
-<div class="fh-account-action-buttons">
-<button class="hidden fh-account-action-primary theme-bg" id="acc-detail-edit-asset" onclick="openAssetEditModal(window.currentEditingAccountId)"><i class="fa-solid fa-pen mr-1"></i> Edit Account</button>
-<button class="hidden fh-account-action-primary theme-bg" id="acc-detail-edit-debt" onclick="openDebtDetailModal(window.currentEditingAccountId)"><i class="fa-solid fa-pen mr-1"></i> Edit Liability</button>
-<button class="fh-account-action-archive" id="acc-detail-archive-btn" onclick="confirmDeleteAccountFromModal()"><i class="fa-solid fa-box-archive mr-1"></i> Archive Account</button>
+<div class="flex flex-wrap justify-between items-center gap-3 bg-gray-50 dark:bg-gray-950 p-2 rounded-xl">
+<div>
+<div class="text-xs font-bold text-rose-500">Account Actions</div>
+<div class="text-[11px] text-gray-400">Manage this account or permanently delete it</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="hidden px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold theme-bg" id="acc-detail-edit-asset" onclick="openAssetEditModal(window.currentEditingAccountId)"><i class="fa-solid fa-pen mr-1"></i> Edit Account</button>
+<button class="hidden px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold theme-bg" id="acc-detail-edit-debt" onclick="openDebtDetailModal(window.currentEditingAccountId)"><i class="fa-solid fa-pen mr-1"></i> Edit Liability</button>
+<button class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-semibold" id="acc-detail-archive-btn" onclick="confirmDeleteAccountFromModal()"><i class="fa-solid fa-box-archive mr-1"></i> Archive Account</button>
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="acc-detail-balance-summary"></div>
@@ -4133,51 +3884,7 @@ Bonus" rows="4"></textarea></div>
       const isLinkedRefund = transaction.type === 'Expense' && !!transaction.refundOfTransactionId;
       const signedAmount = isLinkedRefund ? -Math.abs(rawAmount) : rawAmount;
       const amount = Math.max(0, signedAmount);
-
-      if (transaction.type === 'Expense' && signedAmount !== 0) {
-        // Split expenses must retain their category allocation in every report,
-        // not just in the transaction ledger. Linked refunds of split purchases
-        // are allocated back to the original split categories proportionately.
-        let allocationSource = transaction;
-        if (isLinkedRefund) {
-          const original = (state.transactions || []).find(t => String(t.id) === String(transaction.refundOfTransactionId));
-          if (original && Array.isArray(original.splits) && original.splits.length) allocationSource = original;
-        }
-        const splits = Array.isArray(allocationSource.splits) ? allocationSource.splits : [];
-        const validSplits = splits.map(split => ({
-          category: split.category || 'Uncategorized',
-          subcategory: split.subcategory || 'Uncategorized',
-          cents: Math.max(0, Number(split.amountCents) || 0)
-        })).filter(split => split.cents > 0);
-        const splitCents = validSplits.reduce((sum, split) => sum + split.cents, 0);
-        if (validSplits.length && splitCents > 0) {
-          let remainingCents = Math.round(Math.abs(signedAmount) * 100);
-          return validSplits.map((split, index) => {
-            const cents = index === validSplits.length - 1
-              ? remainingCents
-              : Math.min(remainingCents, Math.round(Math.abs(signedAmount) * 100 * split.cents / splitCents));
-            remainingCents -= cents;
-            return {
-              transaction,
-              category: isLinkedRefund && transaction.refundOriginalCategory
-                ? transaction.refundOriginalCategory
-                : split.category,
-              subcategory: isLinkedRefund && transaction.refundOriginalCategory
-                ? (transaction.subcategory || 'Uncategorized')
-                : split.subcategory,
-              amount: (signedAmount < 0 ? -1 : 1) * cents / 100,
-              component: signedAmount < 0 ? 'Refund' : 'Expense'
-            };
-          }).filter(component => Math.abs(component.amount) > 0.0001);
-        }
-        return [{
-          transaction,
-          category: isLinkedRefund ? (transaction.refundOriginalCategory || transaction.category || 'Uncategorized') : (transaction.category || 'Uncategorized'),
-          subcategory: transaction.subcategory || 'Uncategorized',
-          amount: signedAmount,
-          component: signedAmount < 0 ? 'Refund' : 'Expense'
-        }];
-      }
+      if (transaction.type === 'Expense' && signedAmount !== 0) return [{ transaction, category: isLinkedRefund ? (transaction.refundOriginalCategory || transaction.category || 'Uncategorized') : (transaction.category || 'Uncategorized'), subcategory: transaction.subcategory || 'Uncategorized', amount: signedAmount, component: signedAmount < 0 ? 'Refund' : 'Expense' }];
       if (transaction.type === 'Interest Charge' && signedAmount !== 0) return [{ transaction, category: 'Debt Service', subcategory: 'Interest Expense', amount: signedAmount, component: signedAmount < 0 ? 'Interest charge reversal' : 'Interest charge' }];
       if (transaction.type === 'Debt Payment') {
         const interest = Math.max(0, Math.min(amount, Number(transaction.debtInterestAmount) || 0));
@@ -5549,7 +5256,7 @@ Bonus" rows="4"></textarea></div>
       const comparison=document.getElementById('mo-comparison');
       if(comparison){
         const delta=(current,previous)=>previous===0?(current===0?'—':'New'):formatFinancial(current-previous);
-        comparison.innerHTML=[['Income',income,prevIncome],['Expenses',expenseTotal,prevExpense],['Operating surplus',net,prevIncome-prevExpense]].map(([label,current,previous])=>`<div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3"><div class="text-xs text-gray-500">${label}</div><strong class="block text-lg accounting-num ${label==='Expenses'?'text-rose-600':(current-previous)<0?'text-rose-600':'text-emerald-600'}">${delta(current,previous)}</strong><div class="text-xs text-gray-400">vs ${escapeHtml(prevKey)}</div></div>`).join('');
+        comparison.innerHTML=[['Income',income,prevIncome],['Expenses',expenseTotal,prevExpense],['Net cash flow',net,prevIncome-prevExpense]].map(([label,current,previous])=>`<div class="rounded-xl bg-gray-50 dark:bg-gray-950 p-3"><div class="text-xs text-gray-500">${label}</div><strong class="block text-lg accounting-num ${label==='Expenses'?'text-rose-600':(current-previous)<0?'text-rose-600':'text-emerald-600'}">${delta(current,previous)}</strong><div class="text-xs text-gray-400">vs ${escapeHtml(prevKey)}</div></div>`).join('');
       }
     }
 
@@ -6247,31 +5954,12 @@ Bonus" rows="4"></textarea></div>
       const balanceDifference = calculatedEndingBalance - currentBalance;
       const balanceLabel = acc.type === 'debt' ? 'Outstanding balance' : 'Calculated balance';
       // An unset opening balance remains a derived suggestion until the user explicitly saves one.
-      summary.className = 'fh-account-metrics';
+      summary.className = 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2';
       summary.innerHTML = `
-        <section class="fh-account-metric fh-account-opening">
-          <div class="fh-account-metric-label">Opening balance <span>${hasSavedOpeningBalance ? '· saved' : '· derived'}</span></div>
-          <div class="fh-account-opening-controls">
-            <label class="fh-account-currency" for="acc-opening-balance-input">$</label>
-            <input id="acc-opening-balance-input" type="number" step="0.01" value="${Number(openingBalance).toFixed(2)}" aria-label="Opening balance" class="accounting-num" />
-            <button type="button" onclick="saveAccountOpeningBalance()" class="fh-account-save theme-bg">Save</button>
-          </div>
-          <div class="fh-account-help" title="Saving adjusts the current balance by the same difference. It does not create a transaction.">As of the start of recorded activity · Saving adjusts the current balance; no transaction is created.</div>
-        </section>
-        <section class="fh-account-metric">
-          <div class="fh-account-metric-label">${balanceLabel}</div>
-          <div class="fh-account-metric-value accounting-num">${formatFinancial(currentBalance)}</div>
-        </section>
-        <section class="fh-account-metric">
-          <div class="fh-account-metric-label">Activity records</div>
-          <div class="fh-account-metric-value">${activity.length}</div>
-        </section>
-        <section class="fh-account-metric">
-          <div class="fh-account-metric-label">Calculated ending balance</div>
-          <div class="fh-account-metric-value accounting-num">${formatFinancial(calculatedEndingBalance)}</div>
-          <div class="fh-account-status ${Math.abs(balanceDifference) < 0.005 ? 'is-match' : 'is-warning'}">${Math.abs(balanceDifference) < 0.005 ? 'Matches current balance' : `Difference: ${formatFinancial(balanceDifference)}`}</div>
-          ${hasSavedOpeningBalance && Math.abs(balanceDifference) >= 0.005 ? `<button type="button" onclick="syncAccountBalanceToActivity('${String(acc.id).replace(/'/g, '&#39;')}')" class="fh-account-sync">Sync to activity</button>` : ''}
-        </section>`;
+        <div class="bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-xl p-3"><div class="text-[10px] uppercase font-semibold text-gray-500">Opening balance${hasSavedOpeningBalance ? ' · saved' : ' · derived'}</div><div class="flex items-center gap-2 mt-2"><span class="text-xs text-gray-500">$</span><input id="acc-opening-balance-input" type="number" step="0.01" value="${Number(openingBalance).toFixed(2)}" class="min-w-0 w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-1.5 text-sm font-bold accounting-num" /></div><button onclick="saveAccountOpeningBalance()" class="mt-2 w-full px-2 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-semibold theme-bg">Save opening balance</button><div class="text-[9px] text-gray-400 mt-1">As of the start of this account's recorded activity. Saving adjusts the current balance by the same difference; it does not create a transaction.</div></div>
+        <div class="bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-xl p-3"><div class="text-[10px] uppercase font-semibold text-gray-500">${balanceLabel}</div><div class="text-base font-bold accounting-num mt-1">${formatFinancial(currentBalance)}</div></div>
+        <div class="bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-xl p-3"><div class="text-[10px] uppercase font-semibold text-gray-500">Activity records</div><div class="text-base font-bold mt-1">${activity.length}</div></div>
+        <div class="bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-xl p-3"><div class="text-[10px] uppercase font-semibold text-gray-500">Calculated ending balance</div><div class="text-base font-bold mt-1 accounting-num">${formatFinancial(calculatedEndingBalance)}</div><div class="text-[9px] ${Math.abs(balanceDifference) < 0.005 ? 'text-emerald-600' : 'text-amber-600'} mt-1">${Math.abs(balanceDifference) < 0.005 ? 'Matches current balance' : `Difference vs current: ${formatFinancial(balanceDifference)}`}</div>${hasSavedOpeningBalance && Math.abs(balanceDifference) >= 0.005 ? `<button type="button" onclick="syncAccountBalanceToActivity('${String(acc.id).replace(/'/g, '&#39;')}')" class="mt-2 w-full px-2 py-1.5 rounded-lg bg-amber-600 text-white text-xs font-semibold">Sync balance to activity</button><div class="text-[9px] text-gray-400 mt-1">Updates the saved balance to the opening balance plus recorded activity. No transactions are created.</div>` : ''}</div>`;
 
       rows.innerHTML = `<tr class="bg-indigo-50/70 dark:bg-indigo-950/30"><td class="px-3 py-1.5 whitespace-nowrap">—</td><td class="px-4 py-3 font-semibold">Opening balance <span class="text-[10px] font-normal text-gray-500">(${hasSavedOpeningBalance ? 'saved opening balance' : 'derived until saved'})</span></td><td class="px-3 py-1.5">Opening balance</td><td class="px-4 py-3 text-right accounting-num">—</td><td class="px-3 py-1.5 text-right font-bold accounting-num">${formatFinancial(runningBalance)}</td></tr>`;
       if (!activity.length) {
@@ -8858,6 +8546,20 @@ ${acc.name}`);
       if (!entries.length) return '<td data-label="Running Balance" class="px-4 py-3 text-right text-gray-400">—</td>';
       if (entries.length === 1) {
         return `<td data-label="Running Balance" class="px-3 py-1.5 text-right font-bold accounting-num">${formatFinancial(entries[0].balance)}</td>`;
+      }
+
+      // Compact density keeps every account balance on one horizontal line.
+      // Normal and Wide retain the existing stacked, more-readable layout.
+      const compactDensity = state.ledgerViewDensity === 'compact';
+      if (compactDensity) {
+        return `<td data-label="Running Balance" class="px-3 py-1.5 text-right whitespace-nowrap">
+          <div class="ledger-running-balances-compact" aria-label="${entries.length} account balances">
+            ${entries.map(entry => `<span class="ledger-running-balance-item" title="${escapeHtml(entry.name)}">
+              <span class="ledger-running-account-label">${escapeHtml(entry.name)}</span>
+              <strong class="accounting-num">${formatFinancial(entry.balance)}</strong>
+            </span>`).join('<span class="ledger-running-balance-separator" aria-hidden="true">·</span>')}
+          </div>
+        </td>`;
       }
       return `<td data-label="Running Balance" class="px-3 py-1.5 text-right"><div class="inline-flex flex-col items-end gap-1">${entries.map(entry => `<div class="flex items-center justify-end gap-2"><span class="text-[9px] text-gray-400">${escapeHtml(entry.name)}</span><strong class="text-xs accounting-num">${formatFinancial(entry.balance)}</strong></div>`).join('')}</div></td>`;
     }
@@ -14562,9 +14264,7 @@ function openTransactionModal(requestedEditId = null) {
       });
       addLedgerColumnResizeHandles(header);
     }
-    // Lower, purpose-specific minimums let users make columns genuinely compact.
-    // Text columns wrap within the chosen width; numeric/date columns remain readable.
-    const LEDGER_COLUMN_MIN_WIDTHS = {date:72,vendor:68,description:76,type:68,bucket:68,subcategory:72,account:76,amount:82,running:88,source:68,reconciliation:82};
+    const LEDGER_COLUMN_MIN_WIDTHS = {date:105,vendor:120,description:140,type:110,bucket:110,subcategory:120,account:130,amount:108,running:120,source:120,reconciliation:135};
     function ledgerColumnMinWidth(key) { return LEDGER_COLUMN_MIN_WIDTHS[key] || 90; }
     function clampLedgerColumnWidth(key, rawWidth) {
       const numeric = Number(rawWidth);
@@ -14811,31 +14511,30 @@ function openTransactionModal(requestedEditId = null) {
         return `<div class="rounded-xl border p-3 flex flex-col justify-between gap-2 bg-white dark:bg-gray-900"><div class="flex items-start justify-between gap-3"><div class="min-w-0"><strong>${name}</strong><p class="text-gray-500 mt-1">${desc}</p><p class="text-[10px] text-gray-400 mt-1">${action}</p></div><span class="font-bold whitespace-nowrap ${count?'text-amber-600':'text-emerald-600'}">${count} ${count?'to review':'clear'}</span></div>${actionHtml}</div>`;
       }).join('');
     }
-    function formatCheckInSnapshotStatus(status){return status==='completed'?'Complete':status==='incomplete'?'Incomplete':status==='reopened'?'Reopened':'Saved';}
     function switchCheckInPanel(panel){
       ['monthly','yearly','history'].forEach(key=>{const section=document.getElementById(`checkin-panel-${key}`),tab=document.getElementById(`checkin-tab-${key}`);if(section)section.classList.toggle('hidden',key!==panel);if(tab){tab.classList.toggle('bg-indigo-600',key===panel);tab.classList.toggle('text-white',key===panel);tab.classList.toggle('border',key!==panel);}});
       if(panel==='yearly')renderYearEndClose();if(panel==='history')renderCheckInSnapshotHistory();
     }
-    function renderCheckInSnapshotHistory(){const host=document.getElementById('checkin-snapshot-history');if(!host)return;const monthly=Object.values(state.monthlyCloseSnapshots||{}).map(x=>({period:x.period||'',type:'Monthly',saved:x.closedAt,status:formatCheckInSnapshotStatus(x.status),notes:x.status==='reopened'?'Reopened for corrections':'Monthly financial snapshot'}));const yearly=Object.values(state.yearEndSnapshots||{}).map(x=>({period:String(x.year||''),type:'Yearly',saved:x.closedAt,status:formatCheckInSnapshotStatus(x.status),notes:x.status==='reopened'?'Reopened for corrections':'Year-end financial snapshot'}));const rows=[...monthly,...yearly].sort((a,b)=>String(b.saved||'').localeCompare(String(a.saved||'')));host.innerHTML=rows.length?`<table class="w-full text-sm"><thead><tr class="bg-gray-100 dark:bg-gray-800"><th class="text-left p-2">Period</th><th class="text-left p-2">Type</th><th class="text-left p-2">Saved</th><th class="text-left p-2">Status / Notes</th><th class="text-left p-2">Action</th></tr></thead><tbody>${rows.map(x=>`<tr class="border-t border-gray-200 dark:border-gray-700"><td class="p-2">${escapeHtml(x.period)}</td><td class="p-2">${x.type}</td><td class="p-2">${x.saved?new Date(x.saved).toLocaleString():'—'}</td><td class="p-2">${escapeHtml(x.status||'saved')} · ${escapeHtml(x.notes)}</td><td class="p-2"><button class="text-indigo-600 dark:text-cyan-300 underline" onclick="${x.type==='Monthly'?`document.getElementById('monthly-close-period').value='${escapeHtml(x.period)}';switchCheckInPanel('monthly');renderMonthlyClose()`:`document.getElementById('year-end-period').value='${escapeHtml(x.period)}';switchCheckInPanel('yearly');renderYearEndClose()`}">Review</button></td></tr>`).join('')}</tbody></table>`:'<p class="text-sm text-gray-500">No saved snapshots yet.</p>';}
+    function renderCheckInSnapshotHistory(){const host=document.getElementById('checkin-snapshot-history');if(!host)return;const monthly=Object.values(state.monthlyCloseSnapshots||{}).map(x=>({period:x.period||'',type:'Monthly',saved:x.closedAt,status:x.status,notes:x.status==='reopened'?'Reopened for review':'Month-end snapshot'}));const yearly=Object.values(state.yearEndSnapshots||{}).map(x=>({period:String(x.year||''),type:'Yearly',saved:x.closedAt,status:x.status,notes:x.reopenReason||'Year-end snapshot'}));const rows=[...monthly,...yearly].sort((a,b)=>String(b.saved||'').localeCompare(String(a.saved||'')));host.innerHTML=rows.length?`<table class="w-full text-sm"><thead><tr class="bg-gray-100 dark:bg-gray-800"><th class="text-left p-2">Period</th><th class="text-left p-2">Type</th><th class="text-left p-2">Saved</th><th class="text-left p-2">Status / Notes</th><th class="text-left p-2">Action</th></tr></thead><tbody>${rows.map(x=>`<tr class="border-t border-gray-200 dark:border-gray-700"><td class="p-2">${escapeHtml(x.period)}</td><td class="p-2">${x.type}</td><td class="p-2">${x.saved?new Date(x.saved).toLocaleString():'—'}</td><td class="p-2">${escapeHtml(x.status||'saved')} · ${escapeHtml(x.notes)}</td><td class="p-2"><button class="text-indigo-600 dark:text-cyan-300 underline" onclick="${x.type==='Monthly'?`document.getElementById('monthly-close-period').value='${escapeHtml(x.period)}';switchCheckInPanel('monthly');renderMonthlyClose()`:`document.getElementById('year-end-period').value='${escapeHtml(x.period)}';switchCheckInPanel('yearly');renderYearEndClose()`}">Review</button></td></tr>`).join('')}</tbody></table>`:'<p class="text-sm text-gray-500">No saved snapshots yet.</p>';}
     function closePeriod(){return document.getElementById('monthly-close-period')?.value||new Date().toISOString().slice(0,7);}
     function closeMetrics(period){const tx=(state.transactions||[]).filter(t=>String(t.date||'').slice(0,7)===period),accounts=(state.accounts||[]).filter(a=>!a.archived),unrec=accounts.filter(a=>!a.lastReconciledAt||String(a.lastReconciledAt).slice(0,7)!==period),income=tx.filter(t=>t.type==='Income'&&t.category!=='Transfer').reduce((s,t)=>s+(Number(t.amount)||0),0),expense=tx.reduce((s,t)=>s+getExpenseReportingComponents(t).reduce((a,c)=>a+(Number(c.amount)||0),0),0),unmatched=tx.filter(t=>!t.reconciled&&!t.statementMatchId&&!t.statementMatchGroupId),outstandingBills=(state.calendarBills||[]).filter(b=>!b.paid&&!b.recurrenceOccurrenceDeleted&&String(b.date||'').slice(0,7)===period);return {tx,accounts,unrec,income,expense,unmatched,outstandingBills};}
-    const MONTH_CLOSE_TASKS=[['review_income_expenses','Review monthly income and spending for completeness'],['review_budget','Compare actual spending with the paycheque budget'],['review_accounts','Reconcile bank and credit card accounts; investigate differences'],['review_unmatched','Investigate unmatched transactions'],['review_bills','Confirm bill payments, outstanding bills and expected income'],['review_debt','Review debt balances, principal payments and interest'],['review_savings','Review savings contributions and sinking-fund balances'],['review_transfers','Review transfers, refunds and unusual or duplicate entries'],['review_carryforward','Confirm whether unused spending money carries forward or resets'],['backup','Create a current data backup']];
-    const YEAR_END_TASKS=[['monthly_coverage','Confirm all 12 monthly snapshots are completed'],['unmatched','Investigate unmatched transactions'],['income_expenses','Review annual income and spending against your budget'],['debt_savings','Review debt principal, interest, savings and sinking-fund balances'],['account_balances','Verify December 31 closing balances for all active accounts'],['bills_transfers','Review outstanding bills, scheduled income, transfers and refunds'],['net_worth','Compare year-end net worth with the previous year'],['backup','Create a full data backup before completing year-end']];
+    const MONTH_CLOSE_TASKS=[['review_income_expenses','Review monthly income and expenses for completeness'],['review_budget','Compare budget actuals with the paycheque plan'],['review_accounts','Reconcile bank and credit card accounts; investigate differences'],['review_unmatched','Review unmatched or unreconciled transactions'],['review_bills','Review paid and outstanding bills and scheduled income'],['review_debt','Review debt balances, principal payments and interest'],['review_savings','Review savings contributions and sinking-fund balances'],['review_transfers','Review transfers, refunds and unusual or duplicate entries'],['review_carryforward','Confirm variable pool carry-forward/reset decisions'],['backup','Save a current JSON backup']];
+    const YEAR_END_TASKS=[['monthly_coverage','Confirm all 12 monthly close snapshots are complete'],['unmatched','Review unmatched and unreconciled transactions'],['income_expenses','Review annual income and expenses against the full-year budget'],['debt_savings','Review debt principal, interest, savings and sinking-fund balances'],['account_balances','Confirm December 31 balances for all active accounts'],['bills_transfers','Review outstanding bills, scheduled income, transfers and refunds'],['net_worth','Compare year-end net worth with the previous year'],['backup','Save a full JSON backup before completing year-end']];
     function setMonthlyCloseTask(key,checked){const p=closePeriod();state.monthlyCloseChecklist=state.monthlyCloseChecklist||{};state.monthlyCloseChecklist[p]=state.monthlyCloseChecklist[p]||{};state.monthlyCloseChecklist[p][key]=!!checked;saveData();renderMonthlyClose();}
     function openCloseUnmatched(){window.dataHealthTransactionIds=null;window.closeLedgerFilterPeriod=closePeriod();window.closeLedgerFilterOnlyUnmatched=true;ledgerFilterSelections={};ledgerFilterSearchTerms={};const p=document.getElementById('ledger-period-preset');if(p)p.value='all';switchTab('ledger');const host=document.getElementById('ledger-table-container');if(host)host.scrollIntoView({behavior:'smooth',block:'start'});}
     function clearCloseTransactionFilter(){window.closeLedgerFilterPeriod=null;window.closeLedgerFilterOnlyUnmatched=false;window.dataHealthTransactionIds=null;const p=document.getElementById('ledger-period-preset');if(p)p.value='current';renderLedger();}
-    function renderMonthlyClose(){const p=closePeriod(),d=closeMetrics(p),sum=document.getElementById('monthly-close-summary'),list=document.getElementById('monthly-close-checklist');if(!sum||!list)return;sum.innerHTML=[['Transactions',d.tx.length],['Income',formatFinancial(d.income)],['Expenses',formatFinancial(d.expense)],['Unmatched',`<button onclick="openCloseUnmatched()" class="text-indigo-600 dark:text-indigo-300 underline font-bold">${d.unmatched.length} · View transactions</button>`],['Outstanding bills / income',d.outstandingBills.length]].map(x=>`<div class="p-2 bg-gray-50 dark:bg-gray-950 rounded"><div class="text-gray-500">${x[0]}</div><b>${x[1]}</b></div>`).join('');const flags=state.monthlyCloseChecklist?.[p]||{},done=MONTH_CLOSE_TASKS.filter(([k])=>!!flags[k]).length,pct=Math.round(done/MONTH_CLOSE_TASKS.length*100),progressLabel=document.getElementById('monthly-close-progress-label'),progressPercent=document.getElementById('monthly-close-progress-percent'),progressBar=document.getElementById('monthly-close-progress-bar'),periodDisplay=document.getElementById('checkin-period-display');if(progressLabel)progressLabel.textContent=`${done} of ${MONTH_CLOSE_TASKS.length} complete`;if(progressPercent)progressPercent.textContent=`${pct}%`;if(progressBar)progressBar.style.width=`${pct}%`;if(periodDisplay)periodDisplay.textContent=p;const rows=[`<div class="p-2 border rounded flex items-center justify-between gap-2"><span>Account reconciliation: ${d.unrec.length} account(s) not reconciled in this month</span><span class="font-semibold ${d.unrec.length?'text-amber-600':'text-emerald-600'}">${d.unrec.length?'Review':'Clear'}</span></div>`,`<div class="p-2 border rounded flex items-center justify-between gap-2"><span>Transaction review: <button onclick="openCloseUnmatched()" class="text-indigo-600 dark:text-indigo-300 underline">${d.unmatched.length} unmatched transaction(s) · Open list</button></span><span class="font-semibold ${d.unmatched.length?'text-amber-600':'text-emerald-600'}">${d.unmatched.length?'Review':'Clear'}</span></div>`,...MONTH_CLOSE_TASKS.map(([key,label])=>{const actions={review_income_expenses:"switchTab('ledger')",review_budget:"switchTab('biweekly')",review_accounts:"switchTab('accounts')",review_unmatched:"openCloseUnmatched()",review_bills:"switchTab('calendar')",review_debt:"switchTab('debt')",review_savings:"switchTab('accounts')",review_transfers:"switchTab('ledger')",review_carryforward:"switchTab('biweekly')",backup:"exportData()"};return `<div class="p-2 border rounded flex items-center gap-2"><label class="flex items-center gap-2 flex-1 min-w-0 cursor-pointer"><input type="checkbox" ${flags[key]?'checked':''} onchange="setMonthlyCloseTask('${key}',this.checked)" class="accent-indigo-600"><span>${label}</span></label><button type="button" class="text-indigo-600 dark:text-cyan-300 underline text-xs whitespace-nowrap" onclick="${actions[key]}">Open</button></div>`;})];list.innerHTML=rows.join('');const snap=state.monthlyCloseSnapshots?.[p];const reopen=document.getElementById('monthly-close-reopen');if(reopen)reopen.classList.toggle('hidden',!snap||snap.status==='reopened');renderMonthlyCloseHistory();}
+    function renderMonthlyClose(){const p=closePeriod(),d=closeMetrics(p),sum=document.getElementById('monthly-close-summary'),list=document.getElementById('monthly-close-checklist');if(!sum||!list)return;sum.innerHTML=[['Transactions',d.tx.length],['Income',formatFinancial(d.income)],['Expenses',formatFinancial(d.expense)],['Unmatched',`<button onclick="openCloseUnmatched()" class="text-indigo-600 dark:text-indigo-300 underline font-bold">${d.unmatched.length} · View transactions</button>`],['Outstanding bills / income',d.outstandingBills.length]].map(x=>`<div class="p-2 bg-gray-50 dark:bg-gray-950 rounded"><div class="text-gray-500">${x[0]}</div><b>${x[1]}</b></div>`).join('');const flags=state.monthlyCloseChecklist?.[p]||{},done=MONTH_CLOSE_TASKS.filter(([k])=>!!flags[k]).length,pct=Math.round(done/MONTH_CLOSE_TASKS.length*100),progressLabel=document.getElementById('monthly-close-progress-label'),progressPercent=document.getElementById('monthly-close-progress-percent'),progressBar=document.getElementById('monthly-close-progress-bar'),periodDisplay=document.getElementById('checkin-period-display');if(progressLabel)progressLabel.textContent=`${done} of ${MONTH_CLOSE_TASKS.length} complete`;if(progressPercent)progressPercent.textContent=`${pct}%`;if(progressBar)progressBar.style.width=`${pct}%`;if(periodDisplay)periodDisplay.textContent=p;const rows=[`<div class="p-2 border rounded flex items-center justify-between gap-2"><span>Account reconciliation: ${d.unrec.length} account(s) not reconciled in this month</span><span class="font-semibold ${d.unrec.length?'text-amber-600':'text-emerald-600'}">${d.unrec.length?'Review':'Clear'}</span></div>`,`<div class="p-2 border rounded flex items-center justify-between gap-2"><span>Transaction review: <button onclick="openCloseUnmatched()" class="text-indigo-600 dark:text-indigo-300 underline">${d.unmatched.length} unmatched transaction(s) · Open list</button></span><span class="font-semibold ${d.unmatched.length?'text-amber-600':'text-emerald-600'}">${d.unmatched.length?'Review':'Clear'}</span></div>`,...MONTH_CLOSE_TASKS.map(([key,label])=>{const actions={review_income_expenses:"switchTab('ledger')",review_budget:"switchTab('biweekly')",review_accounts:"switchTab('accounts')",review_unmatched:"openCloseUnmatched()",review_bills:"switchTab('calendar')",review_debt:"switchTab('debt')",review_savings:"switchTab('accounts')",review_transfers:"switchTab('ledger')",review_carryforward:"switchTab('biweekly')",backup:"exportData()"};return `<label class="p-2 border rounded flex items-center gap-2"><input type="checkbox" ${flags[key]?'checked':''} onchange="setMonthlyCloseTask('${key}',this.checked)" class="accent-indigo-600"><span class="flex-1">${label}</span><button type="button" class="text-indigo-600 dark:text-cyan-300 underline text-xs whitespace-nowrap" onclick="${actions[key]}">Open</button></label>`;})];list.innerHTML=rows.join('');const snap=state.monthlyCloseSnapshots?.[p];const reopen=document.getElementById('monthly-close-reopen');if(reopen)reopen.classList.toggle('hidden',!snap||snap.status==='reopened');renderMonthlyCloseHistory();}
     function completeMonthlyClose(){const p=closePeriod(),d=closeMetrics(p),flags=state.monthlyCloseChecklist?.[p]||{},missing=MONTH_CLOSE_TASKS.filter(([k])=>!flags[k]);if((d.unrec.length||d.unmatched.length||missing.length)&&!confirm(`${d.unrec.length} account(s), ${d.unmatched.length} transaction(s), and ${missing.length} checklist item(s) remain open. Save as incomplete?`))return;if(!confirm(`Save the ${p} month-end snapshot? This does not lock transactions.`))return;state.monthlyCloseSnapshots=state.monthlyCloseSnapshots||{};state.monthlyCloseSnapshots[p]={period:p,closedAt:new Date().toISOString(),status:d.unrec.length||d.unmatched.length||missing.length?'incomplete':'completed',income:d.income,expenses:d.expense,transactionCount:d.tx.length,unmatched:d.unmatched.length,checklist:{...flags},outstandingItems:d.outstandingBills.map(b=>({id:b.id,description:b.desc,date:b.date,amount:Number(b.amount)||0,type:b.type})),accountBalances:d.accounts.map(a=>({id:a.id,name:a.name,type:a.type,balance:Number(a.balance)||0,statementBalance:a.actualBalance??null}))};saveData();renderMonthlyClose();alert('Monthly snapshot saved.');}
     function reopenMonthlyClose(){const p=closePeriod(),snap=state.monthlyCloseSnapshots?.[p];if(!snap)return;if(!confirm(`Reopen ${p}? The existing snapshot will be retained as a prior snapshot record and the month can be reviewed again.`))return;state.monthlyCloseSnapshots[p]={...snap,status:'reopened',reopenedAt:new Date().toISOString(),priorSnapshot:{...snap}};saveData();renderMonthlyClose();}
-    function renderMonthlyCloseHistory(){const el=document.getElementById('monthly-close-history');if(!el)return;const items=Object.values(state.monthlyCloseSnapshots||{}).sort((a,b)=>b.period.localeCompare(a.period));el.innerHTML=items.length?'<b>Saved monthly snapshots</b><div class="mt-1 space-y-1">'+items.map(x=>`<div>${escapeHtml(x.period)}: <strong>${escapeHtml(formatCheckInSnapshotStatus(x.status))}</strong> · ${new Date(x.closedAt).toLocaleDateString()}${x.reopenedAt?' · reopened '+new Date(x.reopenedAt).toLocaleDateString():''}</div>`).join('')+'</div>':'No monthly snapshots saved.';}
+    function renderMonthlyCloseHistory(){const el=document.getElementById('monthly-close-history');if(!el)return;const items=Object.values(state.monthlyCloseSnapshots||{}).sort((a,b)=>b.period.localeCompare(a.period));el.innerHTML=items.length?'<b>Saved monthly snapshots</b><div class="mt-1 space-y-1">'+items.map(x=>`<div>${escapeHtml(x.period)}: <strong>${escapeHtml(x.status)}</strong> · ${new Date(x.closedAt).toLocaleDateString()}${x.reopenedAt?' · reopened '+new Date(x.reopenedAt).toLocaleDateString():''}</div>`).join('')+'</div>':'No monthly snapshots saved.';}
     function yearEndMetrics(year){const prefix=String(year),tx=(state.transactions||[]).filter(t=>String(t.date||'').startsWith(prefix)),accounts=(state.accounts||[]).filter(a=>!a.archived),months=Array.from({length:12},(_,i)=>`${prefix}-${String(i+1).padStart(2,'0')}`),snapshots=state.monthlyCloseSnapshots||{},closed=months.filter(m=>snapshots[m]&&snapshots[m].status==='completed').length,income=tx.filter(t=>t.type==='Income'&&t.category!=='Transfer').reduce((s,t)=>s+(Number(t.amount)||0),0),expenses=tx.reduce((s,t)=>s+getExpenseReportingComponents(t).reduce((a,c)=>a+(Number(c.amount)||0),0),0),unmatched=tx.filter(t=>!t.reconciled&&!t.statementMatchId&&!t.statementMatchGroupId).length;return {tx,accounts,months,closed,income,expenses,unmatched};}
     function setYearEndCloseTask(key,checked){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear();state.yearEndChecklist=state.yearEndChecklist||{};state.yearEndChecklist[year]=state.yearEndChecklist[year]||{};state.yearEndChecklist[year][key]=!!checked;saveData();renderYearEndClose();}
     function refreshMonthlyCloseReview(){const input=document.getElementById('monthly-close-period');if(input&&!input.value)input.value=new Date().toISOString().slice(0,7);renderMonthlyClose();renderDataHealth();renderCheckInSnapshotHistory();const btn=document.querySelector('#financial-close-period-blocks button[onclick="refreshMonthlyCloseReview()"]');if(btn){const prior=btn.textContent;btn.textContent='Updated';setTimeout(()=>{if(btn.isConnected)btn.textContent=prior;},1200);}}
     function refreshYearEndCloseReview(){const input=document.getElementById('year-end-period');if(input&&!input.value)input.value=new Date().getFullYear();renderYearEndClose();renderDataHealth();renderCheckInSnapshotHistory();const btn=document.querySelector('#checkin-panel-yearly button[onclick="refreshYearEndCloseReview()"]');if(btn){const prior=btn.textContent;btn.textContent='Updated';setTimeout(()=>{if(btn.isConnected)btn.textContent=prior;},1200);}}
-    function renderYearEndClose(){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear(),d=yearEndMetrics(year),sum=document.getElementById('year-end-summary'),list=document.getElementById('year-end-checklist');if(!sum||!list)return;sum.innerHTML=[['Transactions',d.tx.length],['Income',formatFinancial(d.income)],['Expenses',formatFinancial(d.expenses)],['Monthly closes',`${d.closed}/12 completed`]].map(x=>`<div class="p-2 bg-gray-50 dark:bg-gray-950 rounded"><div class="text-gray-500">${x[0]}</div><b>${x[1]}</b></div>`).join('');const flags=state.yearEndChecklist?.[year]||{},done=YEAR_END_TASKS.filter(([key])=>!!flags[key]).length,pct=Math.round(done/YEAR_END_TASKS.length*100),label=document.getElementById('year-end-progress-label'),percent=document.getElementById('year-end-progress-percent'),bar=document.getElementById('year-end-progress-bar');if(label)label.textContent=`${done} of ${YEAR_END_TASKS.length} complete`;if(percent)percent.textContent=`${pct}%`;if(bar)bar.style.width=`${pct}%`;const actions={monthly_coverage:"switchCheckInPanel('history')",unmatched:`openYearUnmatched(${year})`,income_expenses:"switchTab('ledger')",debt_savings:"switchTab('debt')",account_balances:"switchTab('accounts')",bills_transfers:"switchTab('calendar')",net_worth:"switchTab('accounts')",backup:"exportData()"};list.innerHTML=YEAR_END_TASKS.map(([key,label])=>`<div class="p-2 border rounded flex items-center gap-2"><label class="flex items-center gap-2 flex-1 min-w-0 cursor-pointer"><input type="checkbox" ${flags[key]?'checked':''} onchange="setYearEndCloseTask('${key}',this.checked)" class="accent-indigo-600"><span>${label}</span></label><button type="button" class="text-indigo-600 dark:text-cyan-300 underline text-xs whitespace-nowrap" onclick="${actions[key]}">Open</button></div>`).join('');const hist=document.getElementById('year-end-history'),snap=state.yearEndSnapshots?.[year],reopen=document.getElementById('year-end-reopen');if(reopen)reopen.classList.toggle('hidden',!snap||snap.status==='reopened');if(hist){const items=Object.values(state.yearEndSnapshots||{}).sort((a,b)=>Number(b.year)-Number(a.year));hist.innerHTML=items.length?'<b>Saved year-end snapshots</b><div class="mt-1 space-y-1">'+items.map(x=>`<div>${escapeHtml(String(x.year))}: <strong>${escapeHtml(formatCheckInSnapshotStatus(x.status))}</strong> · ${new Date(x.closedAt).toLocaleDateString()}${x.reopenedAt?' · reopened '+new Date(x.reopenedAt).toLocaleDateString():''}${x.reopenReason?' · '+escapeHtml(x.reopenReason):''}</div>`).join('')+'</div>':'No year-end snapshots saved.';}}
+    function renderYearEndClose(){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear(),d=yearEndMetrics(year),sum=document.getElementById('year-end-summary'),list=document.getElementById('year-end-checklist');if(!sum||!list)return;sum.innerHTML=[['Transactions',d.tx.length],['Income',formatFinancial(d.income)],['Expenses',formatFinancial(d.expenses)],['Monthly closes',`${d.closed}/12 completed`]].map(x=>`<div class="p-2 bg-gray-50 dark:bg-gray-950 rounded"><div class="text-gray-500">${x[0]}</div><b>${x[1]}</b></div>`).join('');const flags=state.yearEndChecklist?.[year]||{},done=YEAR_END_TASKS.filter(([key])=>!!flags[key]).length,pct=Math.round(done/YEAR_END_TASKS.length*100),label=document.getElementById('year-end-progress-label'),percent=document.getElementById('year-end-progress-percent'),bar=document.getElementById('year-end-progress-bar');if(label)label.textContent=`${done} of ${YEAR_END_TASKS.length} complete`;if(percent)percent.textContent=`${pct}%`;if(bar)bar.style.width=`${pct}%`;const actions={monthly_coverage:"switchCheckInPanel('history')",unmatched:`openYearUnmatched(${year})`,income_expenses:"switchTab('ledger')",debt_savings:"switchTab('debt')",account_balances:"switchTab('accounts')",bills_transfers:"switchTab('calendar')",net_worth:"switchTab('accounts')",backup:"exportData()"};list.innerHTML=YEAR_END_TASKS.map(([key,label])=>`<label class="p-2 border rounded flex items-center gap-2"><input type="checkbox" ${flags[key]?'checked':''} onchange="setYearEndCloseTask('${key}',this.checked)" class="accent-indigo-600"><span class="flex-1">${label}</span><button type="button" class="text-indigo-600 dark:text-cyan-300 underline text-xs whitespace-nowrap" onclick="${actions[key]}">Open</button></label>`).join('');const hist=document.getElementById('year-end-history'),snap=state.yearEndSnapshots?.[year],reopen=document.getElementById('year-end-reopen');if(reopen)reopen.classList.toggle('hidden',!snap||snap.status==='reopened');if(hist){const items=Object.values(state.yearEndSnapshots||{}).sort((a,b)=>Number(b.year)-Number(a.year));hist.innerHTML=items.length?'<b>Saved year-end snapshots</b><div class="mt-1 space-y-1">'+items.map(x=>`<div>${escapeHtml(String(x.year))}: <strong>${escapeHtml(x.status)}</strong> · ${new Date(x.closedAt).toLocaleDateString()}${x.reopenedAt?' · reopened '+new Date(x.reopenedAt).toLocaleDateString():''}${x.reopenReason?' · '+escapeHtml(x.reopenReason):''}</div>`).join('')+'</div>':'No year-end snapshots saved.';}}
     function openYearUnmatched(year){window.dataHealthTransactionIds=null;window.closeLedgerFilterPeriod=String(year);window.closeLedgerFilterOnlyUnmatched=true;ledgerFilterSelections={};ledgerFilterSearchTerms={};const p=document.getElementById('ledger-period-preset');if(p)p.value='all';switchTab('ledger');const host=document.getElementById('ledger-table-container');if(host)host.scrollIntoView({behavior:'smooth',block:'start'});}
     function reopenYearEndClose(){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear(),snap=state.yearEndSnapshots?.[year];if(!snap)return;const reason=prompt(`Why are you reopening ${year}? This reason will be retained with the close history.`);if(reason===null)return;if(!reason.trim()){alert('Enter a reason to reopen the year.');return;}if(!confirm(`Reopen ${year}? The original snapshot will be retained and the year can be reviewed again.`))return;state.yearEndSnapshots[year]={...snap,status:'reopened',reopenedAt:new Date().toISOString(),reopenReason:reason.trim(),priorSnapshot:{...snap}};saveData();renderYearEndClose();}
-    function completeYearEndClose(){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear(),d=yearEndMetrics(year),flags=state.yearEndChecklist?.[year]||{},missing=YEAR_END_TASKS.filter(([key])=>!flags[key]);if((d.closed<12||d.unmatched||missing.length)&&!confirm(`This year-end review is not complete yet:\n• ${d.closed}/12 monthly snapshots completed\n• ${d.unmatched} unmatched transactions\n• ${missing.length} checklist items outstanding\n\nYou can still save an incomplete snapshot and return to it later. Save the ${year} snapshot as Incomplete?`))return;if(!(d.closed<12||d.unmatched||missing.length)&&!confirm(`All year-end checks are complete. Save the ${year} year-end snapshot as Complete?`))return;state.yearEndSnapshots=state.yearEndSnapshots||{};state.yearEndSnapshots[year]={year,closedAt:new Date().toISOString(),status:d.closed===12&&!d.unmatched&&!missing.length?'completed':'incomplete',checklist:{...flags},income:d.income,expenses:d.expenses,transactionCount:d.tx.length,unmatched:d.unmatched,monthlyCloseCoverage:d.closed,accountBalances:d.accounts.map(a=>({id:a.id,name:a.name,type:a.type,balance:Number(a.balance)||0,statementBalance:a.actualBalance??null})),outstandingItems:(state.calendarBills||[]).filter(b=>!b.paid&&!b.recurrenceOccurrenceDeleted&&String(b.date||'').startsWith(String(year))).map(b=>({id:b.id,description:b.desc,date:b.date,amount:Number(b.amount)||0,type:b.type}))};saveData();renderYearEndClose();alert(state.yearEndSnapshots[year].status==='completed'?'Year-end snapshot saved as Complete.':'Year-end snapshot saved as Incomplete. You can return to the review and complete the outstanding checks later.');}
+    function completeYearEndClose(){const year=Number(document.getElementById('year-end-period')?.value)||new Date().getFullYear(),d=yearEndMetrics(year),flags=state.yearEndChecklist?.[year]||{},missing=YEAR_END_TASKS.filter(([key])=>!flags[key]);if(!confirm(`${d.closed}/12 monthly closes completed, ${d.unmatched} transactions are unmatched, and ${missing.length} checklist item(s) remain open. Save the ${year} year-end snapshot anyway?`))return;state.yearEndSnapshots=state.yearEndSnapshots||{};state.yearEndSnapshots[year]={year,closedAt:new Date().toISOString(),status:d.closed===12&&!d.unmatched&&!missing.length?'completed':'incomplete',checklist:{...flags},income:d.income,expenses:d.expenses,transactionCount:d.tx.length,unmatched:d.unmatched,monthlyCloseCoverage:d.closed,accountBalances:d.accounts.map(a=>({id:a.id,name:a.name,type:a.type,balance:Number(a.balance)||0,statementBalance:a.actualBalance??null})),outstandingItems:(state.calendarBills||[]).filter(b=>!b.paid&&!b.recurrenceOccurrenceDeleted&&String(b.date||'').startsWith(String(year))).map(b=>({id:b.id,description:b.desc,date:b.date,amount:Number(b.amount)||0,type:b.type}))};saveData();renderYearEndClose();alert('Year-end snapshot saved. Continue in the same FinHub file; do not re-enter opening balances.');}
     document.addEventListener('DOMContentLoaded',()=>{['debt-simulator-details','data-health-details'].forEach(id=>{const el=document.getElementById(id);if(!el)return;const key=finhubStorageKey('collapse-'+id);const saved=localStorage.getItem(key);if(saved!==null)el.open=saved==='open';el.addEventListener('toggle',()=>localStorage.setItem(key,el.open?'open':'closed'));});const up=document.getElementById('dashboard-upcoming-month');if(up&&!up.value){const n=new Date();up.value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}`;}renderDashboardUpcoming();const m=document.getElementById('monthly-close-period');if(m&&!m.value)m.value=new Date().toISOString().slice(0,7);const y=document.getElementById('year-end-period');if(y&&!y.value)y.value=new Date().getFullYear();renderMonthlyClose();renderYearEndClose();renderDataHealth();renderCheckInSnapshotHistory();const period=document.getElementById('ledger-period-preset');if(period)period.value='current';applyLedgerColumns();});
 
 
@@ -16827,32 +16526,7 @@ html.dark body[data-finhub-theme] .financial-neutral,html.dark body[data-finhub-
 </style>
 
 
-<style id="finhub-accounts-dashboard-surface-and-detail-compact-2026-11-14">
-/* Accounts page: use the same surface hierarchy as Dashboard without changing
-   any other page or theme palette. */
-#tab-accounts .monthly-kpi,
-#tab-accounts .monthly-panel {
-  background:#fff !important;
-  border-color:rgba(148,163,184,.28) !important;
-  box-shadow:0 1px 3px rgba(15,23,42,.045) !important;
-}
-html.dark #tab-accounts .monthly-kpi,
-html.dark #tab-accounts .monthly-panel {
-  background:var(--fh-dark-card) !important;
-  border-color:var(--fh-dark-border) !important;
-  box-shadow:none !important;
-}
-#tab-accounts .account-card {
-  background:#F8FAFC !important;
-  border-color:#DCE5EF !important;
-}
-html.dark #tab-accounts .account-card {
-  background:var(--fh-dark-card) !important;
-  border-color:var(--fh-dark-border) !important;
-}
-#tab-accounts .account-card:hover { border-color:var(--theme-primary, #0EA5E9) !important; }
-
-/* Match Dashboard's available-to-spend figure typography in the monthly
+<style id="finhub-accounts-dashboard-surface-and-detail-compact-2026-11-14">/* Match Dashboard's available-to-spend figure typography in the monthly
    Debt Payments & Savings block. Keep the existing semantic colours. */
 #tab-dashboard #mo-debt-payments,
 #tab-dashboard #mo-savings {
@@ -17106,6 +16780,78 @@ html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly .global-collapsibl
 </style>
 
 
+<style id="finhub-account-details-compact-and-debt-modal-fix-2026-11-14">
+/* Account settings & balance summary: compact the expanded profile panel,
+   retaining all controls and explanatory information. */
+#account-detail-modal #account-settings-summary > summary {
+  padding:.45rem .7rem !important;
+  font-size:.72rem !important;
+  line-height:1.25 !important;
+}
+#account-detail-modal #account-settings-summary > div {
+  padding:.45rem .6rem .6rem !important;
+  gap:.45rem !important;
+}
+#account-detail-modal #account-settings-summary > div > .flex {
+  padding:.45rem .55rem !important;
+  gap:.5rem !important;
+}
+#account-detail-modal #account-settings-summary > div > .flex > div:first-child .text-xs {
+  font-size:.7rem !important;
+  line-height:1.15 !important;
+}
+#account-detail-modal #account-settings-summary #acc-detail-balance-summary {
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:.45rem !important;
+}
+#account-detail-modal #account-settings-summary #acc-detail-balance-summary > div {
+  min-width:0 !important;
+  padding:.5rem .6rem !important;
+  border-radius:.65rem !important;
+}
+#account-detail-modal #account-settings-summary #acc-detail-balance-summary > div > div:first-child {
+  font-size:.62rem !important;
+  line-height:1.15 !important;
+}
+#account-detail-modal #account-settings-summary #acc-detail-balance-summary .mt-1,
+#account-detail-modal #account-settings-summary #acc-detail-balance-summary .mt-2 {
+  margin-top:.3rem !important;
+}
+#account-detail-modal #account-settings-summary #acc-detail-balance-summary input {
+  min-height:2rem !important;
+  padding:.35rem .5rem !important;
+  font-size:.8rem !important;
+}
+#account-detail-modal #account-settings-summary #acc-detail-balance-summary button {
+  min-height:1.9rem !important;
+  margin-top:.35rem !important;
+  padding:.35rem .55rem !important;
+  font-size:.7rem !important;
+}
+#account-detail-modal #account-settings-summary #acc-detail-balance-summary .text-\\[9px\\] {
+  font-size:.56rem !important;
+  line-height:1.2 !important;
+}
+#account-detail-modal #account-settings-summary #acc-detail-apr {
+  font-size:.68rem !important;
+  line-height:1.2 !important;
+}
+@media (min-width:1100px) {
+  #account-detail-modal #account-settings-summary #acc-detail-balance-summary {
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  }
+}
+@media (max-width:520px) {
+  #account-detail-modal #account-settings-summary #acc-detail-balance-summary {
+    grid-template-columns:minmax(0,1fr) !important;
+  }
+}
+
+/* Ensure the debt payment dialog always obeys its explicit open/close state. */
+#debt-payment-modal[aria-hidden="true"] { display:none !important; }
+#debt-payment-modal[aria-hidden="false"] { display:flex !important; }
+</style>
 
 
 
@@ -17135,405 +16881,293 @@ html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly .global-collapsibl
 </style>
 
 
-<style id="finhub-dark-mode-all-pages-balanced-surfaces-2026-11-14">
+
+
+
+<style id="finhub-shared-design-system-v1">
 /*
-  App-wide dark-mode surface normalization.
-  Uses each selected theme's existing cohesion tokens, so theme hues remain
-  intact while the very dark gray-900/950 panels become readable raised cards.
-  Light mode is intentionally untouched.
+  FINHUB SHARED DESIGN SYSTEM — v1
+  Accounts page is the visual reference.
+  One theme-token surface hierarchy is shared by every page:
+    page canvas -> primary panel/card -> subtly raised nested card -> controls.
+  This layer replaces the recent page-specific Accounts/Debt/dark-mode patches.
+  It is presentation-only: no markup, data, calculations or event handlers change.
 */
-html.dark body[data-finhub-theme] .tab-content :is(.bg-gray-950,.dark\:bg-gray-950) {
-  background-color: var(--fh-cohesion-card) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
+
+/* Canonical palette mapping: use the active FinHub theme in both modes. */
+body[data-finhub-theme] {
+  --fh-ds-page: var(--fh-page, var(--bg-primary, #F5F0FF));
+  --fh-ds-card: var(--fh-card, var(--surface-primary, #FFFFFF));
+  --fh-ds-raised: var(--fh-surface, var(--surface-elevated, #F0E7FA));
+  --fh-ds-ink: var(--fh-ink, var(--text-primary, #241239));
+  --fh-ds-muted: var(--fh-muted, var(--text-secondary, #665078));
+  --fh-ds-border: var(--fh-border, var(--border-primary, #DEC9F5));
+  --fh-ds-accent: var(--fh-primary, var(--accent-primary, #6A0DAD));
+  --fh-ds-income: var(--status-income, #168A69);
+  --fh-ds-expense: var(--status-expense, #E3344B);
+  color: var(--fh-ds-ink);
 }
-html.dark body[data-finhub-theme] .tab-content :is(.bg-gray-900,.dark\:bg-gray-900) {
-  background-color: var(--fh-cohesion-raised) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
+html.dark body[data-finhub-theme] {
+  --fh-ds-page: var(--fh-dark-page, #241736);
+  --fh-ds-card: var(--fh-dark-card, #322145);
+  --fh-ds-raised: var(--fh-dark-surface, #39284D);
+  --fh-ds-ink: var(--fh-dark-ink, #F5F0FF);
+  --fh-ds-muted: var(--fh-dark-muted, #C9B6DC);
+  --fh-ds-border: var(--fh-dark-border, #5B3D78);
+  --fh-ds-income: var(--status-income, #34D399);
+  --fh-ds-expense: var(--status-expense, #FB7185);
 }
-/* The debt tracker contains nested dark panels and chart wrappers that were
-   not covered by the earlier light-surface-only rules. Normalize them too. */
-html.dark body[data-finhub-theme] #tab-debt :is(
-  .debt-simulator-card,.global-collapsible-section,[id^="sec-debt-"],
-  .bg-white,.bg-gray-50,.bg-gray-100,.bg-gray-900,.bg-gray-950,
-  .dark\:bg-gray-900,.dark\:bg-gray-950
+
+/* All pages share one canvas and typography inheritance. */
+body[data-finhub-theme],
+body[data-finhub-theme] main,
+body[data-finhub-theme] .tab-content {
+  background-color: var(--fh-ds-page) !important;
+  color: var(--fh-ds-ink);
+}
+body[data-finhub-theme] .tab-content {
+  font-family: inherit;
+}
+body[data-finhub-theme] .tab-content :is(h1,h2,h3,h4) {
+  color: var(--fh-ds-ink);
+}
+body[data-finhub-theme] .tab-content :is(.text-gray-400,.text-gray-500,.text-gray-600,
+  .text-slate-400,.text-slate-500,.global-collapsible-description) {
+  color: var(--fh-ds-muted);
+}
+
+/* Shared primary panels: this is the Accounts page's outer-card treatment. */
+body[data-finhub-theme] .tab-content :is(
+  .monthly-panel,.monthly-kpi,.accounts-card,.account-summary-card,
+  .report-card,.reports-card,.report-tile,.dashboard-widget,
+  .debt-card,.debt-summary-card,.global-collapsible-section,
+  .debt-simulator-card,details.debt-activity-section,
+  #debt-report-summary > div
+),
+body[data-finhub-theme] #tab-accounts .monthly-kpi,
+body[data-finhub-theme] #tab-accounts .monthly-panel {
+  background: var(--fh-ds-card) !important;
+  background-color: var(--fh-ds-card) !important;
+  color: var(--fh-ds-ink) !important;
+  border-color: var(--fh-ds-border) !important;
+  box-shadow: 0 1px 3px rgba(20, 15, 35, .045);
+}
+
+/* Nested account cards and nested panels use the softly raised Accounts surface. */
+body[data-finhub-theme] .tab-content :is(
+  .account-card,.debt-simulator-card .rounded-xl,
+  .debt-activity-content .rounded-xl,
+  #debt-report-summary .rounded-xl,
+  .monthly-panel .bg-gray-50,.monthly-panel .bg-gray-100,
+  .monthly-panel .bg-gray-50\/50
+),
+body[data-finhub-theme] #tab-accounts .account-card {
+  background: var(--fh-ds-raised) !important;
+  background-color: var(--fh-ds-raised) !important;
+  color: var(--fh-ds-ink) !important;
+  border-color: var(--fh-ds-border) !important;
+}
+body[data-finhub-theme] .tab-content :is(
+  .account-card h1,.account-card h2,.account-card h3,.account-card h4,
+  .account-card strong,.account-card label,
+  .monthly-panel h1,.monthly-panel h2,.monthly-panel h3,.monthly-panel h4
 ) {
-  background-color: var(--fh-cohesion-card) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
+  color: var(--fh-ds-ink) !important;
 }
-/* Nested debt panels sit one step above the page card rather than reverting
-   to near-black backgrounds. */
-html.dark body[data-finhub-theme] #tab-debt :is(
-  .bg-gray-900,.dark\:bg-gray-900,.bg-gray-50,.bg-gray-100
+body[data-finhub-theme] .tab-content :is(
+  .account-card .text-gray-400,.account-card .text-gray-500,
+  .account-card .text-gray-600,.debt-activity-content .text-gray-400,
+  .debt-activity-content .text-gray-500,.debt-activity-content .text-gray-600
 ) {
-  background-color: var(--fh-cohesion-raised) !important;
+  color: var(--fh-ds-muted) !important;
 }
-/* Keep chart canvases transparent so the balanced card surface shows through. */
-html.dark body[data-finhub-theme] #tab-debt canvas,
-html.dark body[data-finhub-theme] #tab-debt svg {
+
+/* Debt tracker: normalize all of its old white/gray/navy panel variants into
+   the same two-level card hierarchy; preserve transparent chart rendering. */
+body[data-finhub-theme] #tab-debt :is(
+  .bg-white,.bg-gray-50,.bg-gray-100,.bg-gray-950,
+  .global-collapsible-summary,.debt-simulator-heading,
+  .global-collapsible-section > div,
+  .debt-simulator-card > #debt-simulator-content,
+  details.debt-activity-section > summary,
+  details.debt-activity-section > .debt-activity-content,
+  .debt-activity-content,table thead,table tfoot
+) {
+  background: var(--fh-ds-card) !important;
+  background-color: var(--fh-ds-card) !important;
+  color: var(--fh-ds-ink) !important;
+  border-color: var(--fh-ds-border) !important;
+}
+body[data-finhub-theme] #tab-debt :is(
+  .bg-gray-50,.bg-gray-100,.bg-gray-950,
+  .debt-simulator-card .text-xs.space-y-1,
+  table thead,table tfoot
+) {
+  background: var(--fh-ds-raised) !important;
+  background-color: var(--fh-ds-raised) !important;
+}
+body[data-finhub-theme] #tab-debt table tbody tr,
+body[data-finhub-theme] #tab-debt table tbody td,
+body[data-finhub-theme] #tab-debt canvas,
+body[data-finhub-theme] #tab-debt svg {
   background-color: transparent !important;
 }
-/* Bring Accounts cards onto the same theme-aware surface scale rather than
-   retaining older hard-coded navy values. */
-html.dark body[data-finhub-theme] #tab-accounts .monthly-kpi,
-html.dark body[data-finhub-theme] #tab-accounts .monthly-panel,
-html.dark body[data-finhub-theme] #tab-accounts .account-card {
-  background-color: var(--fh-cohesion-card) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
+body[data-finhub-theme] #tab-debt :is(th,td) {
+  border-color: var(--fh-ds-border) !important;
 }
-html.dark body[data-finhub-theme] .tab-content :is(.bg-gray-950,.bg-gray-900,.dark\:bg-gray-950,.dark\:bg-gray-900) :is(
-  h1,h2,h3,h4,strong,label,.text-gray-400,.text-gray-500,.text-gray-600,
-  .text-slate-400,.text-slate-500
-) {
-  color: var(--fh-cohesion-ink) !important;
+
+/* All page controls use the same raised surface, readable text and border. */
+body[data-finhub-theme] .tab-content :is(input,select,textarea),
+body[data-finhub-theme] :is(
+  #transaction-modal,#bulk-edit-modal,#recon-modal,#statement-import-modal,
+  #statement-preview-modal,#vendor-rule-modal,#merchant-rule-modal,#import-rule-modal,
+  #account-modal,#account-detail-modal,#debt-detail-modal,#debt-payment-modal,
+  #interest-charge-modal,#joint-bill-modal,#transfer-modal,#zbb-item-modal,
+  #category-modal,#subcategory-modal,#income-category-modal,#type-modal,
+  #calendar-modal,#available-to-spend-modal,#sinking-bucket-modal,
+  #sinking-bucket-activity-modal,#backup-import-preview-modal
+) :is(input,select,textarea) {
+  background: var(--fh-ds-raised) !important;
+  background-color: var(--fh-ds-raised) !important;
+  color: var(--fh-ds-ink) !important;
+  border-color: var(--fh-ds-border) !important;
 }
-html.dark body[data-finhub-theme] .tab-content :is(.bg-gray-950,.bg-gray-900,.dark\:bg-gray-950,.dark\:bg-gray-900) :is(
-  .text-gray-400,.text-gray-500,.text-gray-600,.text-slate-400,.text-slate-500
+body[data-finhub-theme] .tab-content :is(input,select,textarea)::placeholder,
+body[data-finhub-theme] :is(input,select,textarea)::placeholder {
+  color: var(--fh-ds-muted) !important;
+  opacity: .9;
+}
+body[data-finhub-theme] .tab-content :is(input,select,textarea):focus,
+body[data-finhub-theme] :is(input,select,textarea):focus {
+  border-color: var(--fh-ds-accent) !important;
+}
+
+/* Dialog shells are opaque; only the backdrop dims the page underneath. */
+body[data-finhub-theme] :is(
+  #transaction-modal,#bulk-edit-modal,#recon-modal,#statement-import-modal,
+  #statement-preview-modal,#vendor-rule-modal,#merchant-rule-modal,#import-rule-modal,
+  #account-modal,#account-detail-modal,#debt-detail-modal,#debt-payment-modal,
+  #interest-charge-modal,#joint-bill-modal,#transfer-modal,#zbb-item-modal,
+  #category-modal,#subcategory-modal,#income-category-modal,#type-modal,
+  #calendar-modal,#available-to-spend-modal,#sinking-bucket-modal,
+  #sinking-bucket-activity-modal,#backup-import-preview-modal
+) > div:not(.absolute),
+body[data-finhub-theme] :is(
+  #transaction-modal,#bulk-edit-modal,#recon-modal,#statement-import-modal,
+  #statement-preview-modal,#vendor-rule-modal,#merchant-rule-modal,#import-rule-modal,
+  #account-modal,#account-detail-modal,#debt-detail-modal,#debt-payment-modal,
+  #interest-charge-modal,#joint-bill-modal,#transfer-modal,#zbb-item-modal,
+  #category-modal,#subcategory-modal,#income-category-modal,#type-modal,
+  #calendar-modal,#available-to-spend-modal,#sinking-bucket-modal,
+  #sinking-bucket-activity-modal,#backup-import-preview-modal
+) > form {
+  background: var(--fh-ds-card) !important;
+  background-color: var(--fh-ds-card) !important;
+  color: var(--fh-ds-ink) !important;
+  border-color: var(--fh-ds-border) !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body[data-finhub-theme] :is(
+  #transaction-modal,#bulk-edit-modal,#recon-modal,#statement-import-modal,
+  #statement-preview-modal,#vendor-rule-modal,#merchant-rule-modal,#import-rule-modal,
+  #account-modal,#account-detail-modal,#debt-detail-modal,#debt-payment-modal,
+  #interest-charge-modal,#joint-bill-modal,#transfer-modal,#zbb-item-modal,
+  #category-modal,#subcategory-modal,#income-category-modal,#type-modal,
+  #calendar-modal,#available-to-spend-modal,#sinking-bucket-modal,
+  #sinking-bucket-activity-modal,#backup-import-preview-modal
+) :is(.bg-white,.bg-gray-50,.bg-gray-100,.bg-gray-900,.bg-gray-950) {
+  background: var(--fh-ds-raised) !important;
+  background-color: var(--fh-ds-raised) !important;
+  color: var(--fh-ds-ink) !important;
+  border-color: var(--fh-ds-border) !important;
+}
+
+/* Shared secondary Cancel treatment; primary Save actions are not affected. */
+body[data-finhub-theme] button.fh-btn-cancel,
+body[data-finhub-theme] button.finhub-action-cancel {
+  background: color-mix(in srgb, var(--fh-ds-accent) 10%, var(--fh-ds-card)) !important;
+  color: var(--fh-ds-ink) !important;
+  border: 1px solid color-mix(in srgb, var(--fh-ds-accent) 28%, var(--fh-ds-border)) !important;
+  box-shadow: none !important;
+}
+body[data-finhub-theme] button.fh-btn-cancel:hover:not(:disabled),
+body[data-finhub-theme] button.finhub-action-cancel:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--fh-ds-accent) 16%, var(--fh-ds-card)) !important;
+  border-color: var(--fh-ds-accent) !important;
+  color: var(--fh-ds-ink) !important;
+}
+
+/* Preserve the Accounts page's financial number hierarchy across pages. */
+body[data-finhub-theme] .tab-content :is(
+  #accounts-page-assets,#accounts-page-debt,#accounts-page-networth,
+  #mo-debt-payments,#mo-savings
 ) {
-  color: var(--fh-cohesion-muted) !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-variant-numeric: tabular-nums lining-nums !important;
+  font-feature-settings: "tnum" 1,"lnum" 1 !important;
+  letter-spacing: -.5px !important;
+  font-weight: 700 !important;
+}
+
+/* Semantic accounting colours remain consistent and are not replaced by the
+   selected theme's decorative accent colour. */
+body[data-finhub-theme] .tab-content :is(#accounts-page-assets,#accounts-page-networth,#mo-savings,.text-emerald-600,.text-green-600) {
+  color: var(--fh-ds-income) !important;
+}
+body[data-finhub-theme] .tab-content :is(#accounts-page-debt,#mo-debt-payments,.text-rose-600,.text-red-600) {
+  color: var(--fh-ds-expense) !important;
+}
+
+@media (max-width: 640px) {
+  body[data-finhub-theme] .tab-content :is(.monthly-panel,.monthly-kpi,.account-card,
+    .global-collapsible-section,.debt-simulator-card) {
+    min-width: 0;
+  }
 }
 </style>
 
 
-<style id="finhub-design-system-v2">
-/* FinHub shared visual system: consistent rhythm, hierarchy and component behaviour.
-   Theme colours remain token-driven; this layer standardizes geometry and density. */
-body[data-finhub-theme] {
-  --fh-space-1:.25rem;
-  --fh-space-2:.5rem;
-  --fh-space-3:.75rem;
-  --fh-space-4:1rem;
-  --fh-radius-control:.55rem;
-  --fh-radius-card:.8rem;
-  --fh-control-height:2.35rem;
+<style id="finhub-compact-running-balance-one-line-v1">
+/* Expense Tracker: compact multi-account running balances share one row. */
+#ledger-table-container table[data-density="compact"] .ledger-running-balances-compact {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: .28rem;
+  max-width: 100%;
+  white-space: nowrap;
+  vertical-align: middle;
 }
-body[data-finhub-theme] :is(input,select,textarea) {
-  border-radius:var(--fh-radius-control);
-  min-height:var(--fh-control-height);
+#ledger-table-container table[data-density="compact"] .ledger-running-balance-item {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: baseline;
+  gap: .2rem;
+  min-width: 0;
+  white-space: nowrap;
 }
-body[data-finhub-theme] :is(button,.button) {
-  transition:background-color .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease;
+#ledger-table-container table[data-density="compact"] .ledger-running-account-label {
+  display: inline-block;
+  max-width: 3.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #9CA3AF;
+  font-size: 9px;
+  line-height: 1;
 }
-body[data-finhub-theme] :is(.tab-content .rounded-xl,.tab-content .rounded-2xl) {
-  scroll-margin-top:1rem;
+#ledger-table-container table[data-density="compact"] .ledger-running-balance-item strong {
+  font-size: 10px;
+  line-height: 1.05;
+  font-weight: 700;
 }
-body[data-finhub-theme] :is(.tab-content table, .modal-content table) {
-  border-collapse:separate;
-  border-spacing:0;
-}
-body[data-finhub-theme] :is(.tab-content th,.tab-content td) {
-  vertical-align:middle;
-}
-body[data-finhub-theme] :is(.tab-content th) {
-  line-height:1.25;
-}
-body[data-finhub-theme] :is(.tab-content input:focus-visible,.tab-content select:focus-visible,
-  .tab-content textarea:focus-visible,.tab-content button:focus-visible,
-  [id$="-modal"] input:focus-visible,[id$="-modal"] select:focus-visible,
-  [id$="-modal"] textarea:focus-visible,[id$="-modal"] button:focus-visible) {
-  outline:2px solid var(--accent-primary,var(--fh-primary,#7C3AED));
-  outline-offset:2px;
-}
-
-/* Account activity drawer: settings are a compact control strip and four
-   aligned metrics; the activity table owns the remaining vertical space. */
-#account-detail-modal .fh-account-drawer {
-  gap:.55rem !important;
-  padding:1rem !important;
-}
-#account-detail-modal .fh-account-drawer > .flex:first-child {
-  flex:0 0 auto;
-  min-height:2.15rem;
-  padding-bottom:.55rem !important;
-}
-#account-detail-modal #account-settings-summary {
-  flex:0 0 auto;
-  border-radius:var(--fh-radius-card);
-  overflow:hidden;
-}
-#account-detail-modal #account-settings-summary > summary {
-  padding:.42rem .7rem !important;
-  min-height:2rem;
-  font-size:.75rem !important;
-  line-height:1.2 !important;
-}
-#account-detail-modal #account-settings-summary > div {
-  padding:.45rem .6rem .5rem !important;
-  display:flex;
-  flex-direction:column;
-  gap:.45rem !important;
-}
-#account-detail-modal .fh-account-actions {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:.75rem;
-  min-height:2.25rem;
-  padding:0 .1rem;
-}
-#account-detail-modal .fh-account-actions-copy {
-  display:flex;
-  align-items:baseline;
-  gap:.55rem;
-  min-width:0;
-}
-#account-detail-modal .fh-account-actions-copy span {
-  color:var(--text-primary,#F5F0FF);
-  font-size:.75rem;
-  font-weight:700;
-  white-space:nowrap;
-}
-#account-detail-modal .fh-account-actions-copy small {
-  color:var(--text-secondary,#B8AFC8);
-  font-size:.68rem;
-}
-#account-detail-modal .fh-account-action-buttons {
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:.4rem;
-  flex-wrap:wrap;
-}
-#account-detail-modal .fh-account-action-buttons .hidden { display:none !important; }
-#account-detail-modal :is(.fh-account-action-primary,.fh-account-action-archive):not(.hidden) {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:.35rem;
-  min-height:1.95rem;
-  padding:.35rem .65rem;
-  border:0;
-  border-radius:.55rem;
-  color:white;
-  font-size:.7rem;
-  line-height:1;
-  font-weight:700;
-  white-space:nowrap;
-}
-#account-detail-modal .fh-account-action-archive {
-  background:#B96A0B;
-}
-#account-detail-modal .fh-account-metrics {
-  display:grid;
-  grid-template-columns:minmax(15rem,1.55fr) repeat(3,minmax(0,1fr));
-  gap:.45rem;
-  align-items:stretch;
-}
-#account-detail-modal .fh-account-metric {
-  min-width:0;
-  min-height:4.15rem;
-  padding:.48rem .62rem;
-  border:1px solid var(--border-primary,var(--fh-cohesion-border,#5B3D78));
-  border-radius:.65rem;
-  background:var(--surface-elevated,var(--fh-cohesion-raised,#39284D));
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:.18rem;
-}
-#account-detail-modal .fh-account-metric-label {
-  color:var(--text-secondary,#C4B5D5);
-  font-size:.62rem;
-  font-weight:700;
-  line-height:1.15;
-  text-transform:uppercase;
-  letter-spacing:.025em;
-}
-#account-detail-modal .fh-account-metric-label span {
-  opacity:.8;
-  text-transform:none;
-}
-#account-detail-modal .fh-account-metric-value {
-  color:var(--text-primary,#F5F0FF);
-  font-size:1.05rem;
-  font-weight:750;
-  line-height:1.2;
-  font-variant-numeric:tabular-nums;
-}
-#account-detail-modal .fh-account-opening-controls {
-  display:flex;
-  align-items:center;
-  gap:.35rem;
-  min-width:0;
-}
-#account-detail-modal .fh-account-currency {
-  color:var(--text-secondary,#C4B5D5);
-  font-size:.8rem;
-}
-#account-detail-modal .fh-account-opening-controls input {
-  flex:1 1 auto;
-  width:5rem;
-  min-width:0;
-  height:1.85rem;
-  min-height:1.85rem;
-  padding:.25rem .45rem;
-  font-size:.82rem;
-  font-weight:700;
-  background:var(--control-bg,var(--fh-cohesion-page,#241736));
-  color:var(--text-primary,#F5F0FF);
-  border:1px solid var(--control-border,var(--fh-cohesion-border,#5B3D78));
-}
-#account-detail-modal .fh-account-save,
-#account-detail-modal .fh-account-sync {
-  min-height:1.85rem;
-  padding:.3rem .55rem;
-  border:0;
-  border-radius:.5rem;
-  color:#fff;
-  font-size:.68rem;
-  font-weight:700;
-  white-space:nowrap;
-}
-#account-detail-modal .fh-account-help {
-  color:var(--text-secondary,#B8AFC8);
-  font-size:.57rem;
-  line-height:1.2;
-}
-#account-detail-modal .fh-account-status {
-  font-size:.62rem;
-  line-height:1.2;
-  font-weight:600;
-}
-#account-detail-modal .fh-account-status.is-match { color:#10B981; }
-#account-detail-modal .fh-account-status.is-warning { color:#F59E0B; }
-#account-detail-modal .fh-account-sync { background:#B96A0B; align-self:flex-start; }
-#account-detail-modal #acc-detail-apr {
-  margin:0 !important;
-  padding:0 .1rem;
-  font-size:.65rem !important;
-}
-#account-detail-modal #account-settings-summary + details {
-  flex:0 0 auto;
-}
-#account-detail-modal #account-settings-summary + details > summary {
-  padding:.42rem .7rem !important;
-  min-height:2rem;
-  font-size:.75rem !important;
-}
-#account-detail-modal #account-settings-summary + details > div {
-  padding:.5rem !important;
-  gap:.45rem !important;
-}
-#account-detail-modal .overflow-auto.flex-1 {
-  min-height:0;
-}
-#account-detail-modal #acc-activity-table th {
-  padding:.45rem .6rem !important;
-}
-#account-detail-modal #acc-activity-table td {
-  padding:.5rem .6rem !important;
-}
-@media (max-width:900px) {
-  #account-detail-modal .fh-account-metrics {
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-  #account-detail-modal .fh-account-opening { grid-column:span 2; }
-}
-@media (max-width:560px) {
-  #account-detail-modal { padding:.35rem !important; }
-  #account-detail-modal .fh-account-drawer { padding:.65rem !important; }
-  #account-detail-modal .fh-account-actions {
-    align-items:flex-start;
-    flex-direction:column;
-    gap:.4rem;
-  }
-  #account-detail-modal .fh-account-action-buttons { justify-content:flex-start; }
-  #account-detail-modal .fh-account-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  #account-detail-modal .fh-account-opening { grid-column:span 2; }
-  #account-detail-modal .fh-account-help { display:none; }
-}
-@media (prefers-reduced-motion:reduce) {
-  body[data-finhub-theme] * { transition-duration:0.01ms !important; animation-duration:0.01ms !important; }
-}
-</style>
-
-
-<style id="finhub-theme-aware-dark-surfaces-v6-2026-11-14">
-/*
-  Theme-aware dark surface formula.
-  Every theme keeps its own hue family. The same hierarchy is applied to each:
-  page canvas -> card -> raised/control -> elevated -> border.
-  Theme accents and semantic financial colours remain independent.
-*/
-html.dark body[data-finhub-theme="classic"] {
-  --fh-dark-page:#241736; --fh-dark-card:#322145; --fh-dark-raised:#39284d;
-  --fh-dark-elevated:#443057; --fh-dark-border:#5b3d78;
-  --fh-dark-text:#f5f0ff; --fh-dark-muted:#c4b5d5; --fh-dark-subtle:#a996bd;
-}
-html.dark body[data-finhub-theme="silver"] {
-  --fh-dark-page:#171d24; --fh-dark-card:#222b35; --fh-dark-raised:#293542;
-  --fh-dark-elevated:#344252; --fh-dark-border:#3b4856;
-  --fh-dark-text:#e5eaf0; --fh-dark-muted:#b8c3ce; --fh-dark-subtle:#94a3b2;
-}
-html.dark body[data-finhub-theme="neutral"] {
-  --fh-dark-page:#211f1b; --fh-dark-card:#302c26; --fh-dark-raised:#39342c;
-  --fh-dark-elevated:#454035; --fh-dark-border:#51483d;
-  --fh-dark-text:#eee8de; --fh-dark-muted:#c9bdad; --fh-dark-subtle:#aa9d8c;
-}
-html.dark body[data-finhub-theme="colorful"] {
-  --fh-dark-page:#21151e; --fh-dark-card:#30202c; --fh-dark-raised:#392633;
-  --fh-dark-elevated:#493142; --fh-dark-border:#59394d;
-  --fh-dark-text:#f8eaf1; --fh-dark-muted:#d6b9c8; --fh-dark-subtle:#b994a8;
-}
-html.dark body[data-finhub-theme="oceanpop"] {
-  --fh-dark-page:#101d2d; --fh-dark-card:#17283b; --fh-dark-raised:#1c3045;
-  --fh-dark-elevated:#243b52; --fh-dark-border:#35576b;
-  --fh-dark-text:#e9f7f5; --fh-dark-muted:#b8d1d4; --fh-dark-subtle:#91b2b9;
-}
-html.dark body[data-finhub-theme="orangecherry"] {
-  --fh-dark-page:#541316; --fh-dark-card:#681d20; --fh-dark-raised:#742729;
-  --fh-dark-elevated:#81332e; --fh-dark-border:#87402f;
-  --fh-dark-text:#fff1e8; --fh-dark-muted:#f0c2a8; --fh-dark-subtle:#dca18c;
-}
-html.dark body[data-finhub-theme="midnightpop"] {
-  --fh-dark-page:#171426; --fh-dark-card:#211d33; --fh-dark-raised:#2b2640;
-  --fh-dark-elevated:#35304b; --fh-dark-border:#51466a;
-  --fh-dark-text:#f5f0ff; --fh-dark-muted:#b3a9c9; --fh-dark-subtle:#968bad;
-}
-/* These newer theme families use their own navigation hue as the base.
-   The identical mix percentages create the same depth hierarchy in each hue. */
-html.dark body[data-finhub-theme="forestmint"],
-html.dark body[data-finhub-theme="pastelbreeze"],
-html.dark body[data-finhub-theme="purplepulse"],
-html.dark body[data-finhub-theme="oceanslate"] {
-  --fh-dark-page:color-mix(in srgb,var(--fh-nav,#245044) 22%,#10151b);
-  --fh-dark-card:color-mix(in srgb,var(--fh-nav,#245044) 34%,#171c23);
-  --fh-dark-raised:color-mix(in srgb,var(--fh-nav,#245044) 40%,#1b2028);
-  --fh-dark-elevated:color-mix(in srgb,var(--fh-nav,#245044) 48%,#202630);
-  --fh-dark-border:color-mix(in srgb,var(--fh-nav,#245044) 58%,#59616c);
-  --fh-dark-text:#f4f7f8; --fh-dark-muted:#c1cbd0; --fh-dark-subtle:#9eacb3;
-}
-html.dark body[data-finhub-theme="finhubblue"] {
-  --fh-dark-page:#0d1d30; --fh-dark-card:#142b45; --fh-dark-raised:#1d3a5b;
-  --fh-dark-elevated:#27496c; --fh-dark-border:#37628a;
-  --fh-dark-text:#edf5ff; --fh-dark-muted:#b8cbe0; --fh-dark-subtle:#91abc7;
-}
-html.dark body[data-finhub-theme="hibiscus"] {
-  --fh-dark-page:#052d2c; --fh-dark-card:#073d3b; --fh-dark-raised:#10534d;
-  --fh-dark-elevated:#1c665d; --fh-dark-border:#397c70;
-  --fh-dark-text:#effaf5; --fh-dark-muted:#b8d8d0; --fh-dark-subtle:#91bdb1;
-}
-/* Rebind compatibility tokens to the active theme's surface hierarchy. */
-html.dark body[data-finhub-theme] {
-  --fh-cohesion-page:var(--fh-dark-page) !important;
-  --fh-cohesion-card:var(--fh-dark-card) !important;
-  --fh-cohesion-raised:var(--fh-dark-card) !important;
-  --fh-cohesion-border:var(--fh-dark-border) !important;
-  --fh-cohesion-ink:var(--fh-dark-text) !important;
-  --fh-cohesion-muted:var(--fh-dark-muted) !important;
-  --bg-primary:var(--fh-dark-page) !important;
-  --bg-secondary:var(--fh-dark-card) !important;
-  --surface-primary:var(--fh-dark-card) !important;
-  --surface-secondary:var(--fh-dark-card) !important;
-  --surface-elevated:var(--fh-dark-card) !important;
-  --control-bg:var(--fh-dark-raised) !important;
-  --control-border:var(--fh-dark-border) !important;
-  background:var(--fh-dark-page) !important;
-  background-color:var(--fh-dark-page) !important;
-  color:var(--fh-dark-text) !important;
+#ledger-table-container table[data-density="compact"] .ledger-running-balance-separator {
+  flex: 0 0 auto;
+  color: #9CA3AF;
+  font-size: 10px;
 }
 </style>
 
@@ -18138,146 +17772,10 @@ html.dark body[data-finhub-theme] {
 </script>
 
 
-<style id="finhub-visual-correction-debt-theme-and-accounts-typography-v1">
-/* Debt page: explicitly bind all card surfaces and text to the active color mode.
-   Scoped to #tab-debt; does not alter shared page/theme tokens. */
-html.dark #tab-debt :is(.bg-white,.bg-gray-50,.bg-gray-100,.bg-gray-950,
-  .debt-simulator-card,.global-collapsible-section,#debt-simulator-content,
-  .global-collapsible-section > div,.global-collapsible-summary,
-  .debt-simulator-heading,details:not(.global-collapsible-section)),
-html.dark #tab-debt details:not(.global-collapsible-section) > summary {
-  background-color:var(--fh-dark-card) !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-}
-html.dark #tab-debt :is(.bg-gray-50,.bg-gray-100,.bg-gray-950,
-  table thead,table tfoot,.debt-simulator-card .text-xs.space-y-1) {
-  background-color:var(--fh-dark-card) !important;
-  color:var(--fh-dark-text) !important;
-}
-html.dark #tab-debt :is(h1,h2,h3,h4,label,strong,th,td,p,span,summary) {
-  color:inherit;
-}
-html.dark #tab-debt :is(.text-gray-400,.text-gray-500,.text-gray-600,
-  .global-collapsible-description) {
-  color:var(--fh-dark-muted) !important;
-}
-html.dark #tab-debt :is(input,select,textarea) {
-  background-color:var(--fh-dark-raised) !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-}
-html.dark #tab-debt input::placeholder { color:var(--fh-dark-muted) !important; opacity:1; }
-html.dark #tab-debt :is(button,summary):focus-visible,
-html.dark #tab-debt :is(input,select,textarea):focus-visible {
-  outline:2px solid #8b7cff !important;
-  outline-offset:2px !important;
-}
 
-/* Light mode retains the established light card treatment, with explicit
-   readable text and controls so dark-mode overrides cannot leak into it. */
-html:not(.dark) #tab-debt :is(.bg-white,.bg-gray-50,.bg-gray-100,.bg-gray-950,
-  .debt-simulator-card,.global-collapsible-section,#debt-simulator-content,
-  .global-collapsible-section > div,.global-collapsible-summary,
-  .debt-simulator-heading,details:not(.global-collapsible-section)),
-html:not(.dark) #tab-debt details:not(.global-collapsible-section) > summary {
-  background-color:#ffffff !important;
-  color:#1e293b !important;
-  border-color:#d7dee8 !important;
-}
-html:not(.dark) #tab-debt :is(.bg-gray-50,.bg-gray-100,.bg-gray-950,
-  table thead,table tfoot,.debt-simulator-card .text-xs.space-y-1) {
-  background-color:#f1f5f9 !important;
-  color:#475569 !important;
-}
-html:not(.dark) #tab-debt :is(.text-gray-400,.text-gray-500,.text-gray-600,
-  .global-collapsible-description) {
-  color:#64748b !important;
-}
-html:not(.dark) #tab-debt :is(input,select,textarea) {
-  background-color:#ffffff !important;
-  color:#1e293b !important;
-  border-color:#cbd5e1 !important;
-}
-html:not(.dark) #tab-debt input::placeholder { color:#64748b !important; opacity:1; }
-
-/* Keep semantic accent colours readable against each mode's surfaces. */
-html.dark #tab-debt .text-emerald-600,
-html.dark #tab-debt .text-emerald-400 { color:#34d399 !important; }
-html.dark #tab-debt .text-rose-600,
-html.dark #tab-debt .text-rose-400 { color:#fb7185 !important; }
-html:not(.dark) #tab-debt .text-emerald-600 { color:#047857 !important; }
-html:not(.dark) #tab-debt .text-rose-600 { color:#be123c !important; }
-</style>
 
 
 <style id="finhub-visual-correction-v2-theme-accounts-payday-settings">
-/* Debt page: page-local surface tokens. These do not mutate shared theme tokens
-   and therefore cannot recolour other pages. Theme accent colours remain intact. */
-html.dark #tab-debt {
-  --fh-card-bg:var(--fh-dark-card);
-  --fh-card-text:var(--fh-dark-text);
-  --fh-card-border:var(--fh-dark-border);
-  --fh-card-muted:var(--fh-dark-muted);
-  --fh-card-alt:var(--fh-dark-raised);
-}
-html:not(.dark) #tab-debt {
-  --fh-card-bg:#ffffff;
-  --fh-card-text:#1e293b;
-  --fh-card-border:#d7dee8;
-  --fh-card-muted:#64748b;
-  --fh-card-alt:#f1f5f9;
-}
-/* Rebind prior Debt surfaces to the local variables for every visual theme. */
-#tab-debt .bg-white,
-#tab-debt .debt-simulator-card,
-#tab-debt .global-collapsible-section,
-#tab-debt > .rounded-xl.border,
-#tab-debt > .rounded-2xl.border,
-#tab-debt .global-collapsible-summary,
-#tab-debt .debt-simulator-heading,
-#tab-debt details.debt-activity-section,
-#tab-debt details.debt-activity-section > summary,
-#tab-debt details.debt-activity-section > .debt-activity-content,
-#tab-debt .debt-activity-content,
-#tab-debt .global-collapsible-section > div,
-#tab-debt .debt-simulator-card > #debt-simulator-content {
-  background-color:var(--fh-card-bg) !important;
-  color:var(--fh-card-text) !important;
-  border-color:var(--fh-card-border) !important;
-}
-#tab-debt .bg-gray-50,
-#tab-debt .bg-gray-100,
-#tab-debt .bg-gray-950,
-#tab-debt .debt-simulator-card .text-xs.space-y-1,
-#tab-debt table thead,
-#tab-debt table tfoot,
-#tab-debt .debt-activity-content input,
-#tab-debt .debt-activity-content select {
-  background-color:var(--fh-card-alt) !important;
-  color:var(--fh-card-text) !important;
-  border-color:var(--fh-card-border) !important;
-}
-#tab-debt .text-gray-400,
-#tab-debt .text-gray-500,
-#tab-debt .text-gray-600,
-#tab-debt .global-collapsible-description,
-#tab-debt .debt-activity-content .text-gray-500,
-#tab-debt .debt-activity-content .text-gray-400 {
-  color:var(--fh-card-muted) !important;
-}
-#tab-debt input,#tab-debt select,#tab-debt textarea {
-  background-color:var(--fh-card-alt) !important;
-  color:var(--fh-card-text) !important;
-  border-color:var(--fh-card-border) !important;
-}
-#tab-debt input::placeholder { color:var(--fh-card-muted) !important; opacity:1; }
-#tab-debt :is(th,td) { border-color:var(--fh-card-border); }
-#tab-debt :is(button,input,select,textarea,summary):focus-visible {
-  outline:2px solid var(--theme-accent,#8b7cff);
-  outline-offset:2px;
-}
-
 /* Paycheque payday pill: softened teal identity with mode-aware contrast. */
 html.dark #zbb-payday-display {
   background-color:rgba(20,184,166,.16) !important;
@@ -18570,587 +18068,9 @@ body[data-finhub-theme] .bg-indigo-600:active {
 </style>
 
 
-<style id="finhub-dark-mode-page-cohesion-and-header-system-2026-11-14">
-/* FinHub dark-mode cohesion pass. Dark mode only; light themes and all data/logic remain untouched. */
-html.dark body[data-finhub-theme] {
-  --fh-cohesion-page: var(--fh-dark-page, var(--bg-primary, #111827));
-  --fh-cohesion-card: var(--fh-dark-card, var(--surface-primary, var(--preset-surface, #1f2937)));
-  --fh-cohesion-raised: var(--fh-dark-surface, var(--surface-secondary, var(--preset-panel, #273449)));
-  --fh-cohesion-ink: var(--fh-dark-ink, var(--text-primary, #f3f4f6));
-  --fh-cohesion-muted: var(--fh-dark-muted, var(--text-secondary, var(--preset-muted, #cbd5e1)));
-  --fh-cohesion-border: var(--fh-dark-border, var(--border-primary, var(--preset-border, #475569)));
-  --fh-cohesion-accent: var(--fh-primary, var(--accent-primary, #64748b));
-  background-color: var(--fh-cohesion-page) !important;
-  color: var(--fh-cohesion-ink) !important;
-}
-
-/* Standard page-title typography and left alignment across every main page. */
-html.dark body[data-finhub-theme] #tab-dashboard .dashboard-heading h2,
-html.dark body[data-finhub-theme] .tab-content > div:first-child h2 {
-  font-family: inherit !important;
-  font-size: 1.5rem !important;
-  line-height: 2rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.025em !important;
-  text-align: left !important;
-  margin: 0 !important;
-  color: var(--fh-cohesion-ink) !important;
-}
-html.dark body[data-finhub-theme] .tab-content > div:first-child p,
-html.dark body[data-finhub-theme] #tab-dashboard .dashboard-heading p {
-  font-family: inherit !important;
-  font-size: .875rem !important;
-  line-height: 1.35rem !important;
-  font-weight: 400 !important;
-  text-align: left !important;
-  color: var(--fh-cohesion-muted) !important;
-}
-
-/* Reuse the Accounts page's calm, slightly-raised card treatment throughout the app. */
-html.dark body[data-finhub-theme] .tab-content :is(.monthly-panel,.monthly-kpi,.account-card,.accounts-card,.account-summary-card,.report-card,.reports-card,.report-tile,.dashboard-widget,.debt-card,.debt-summary-card),
-html.dark body[data-finhub-theme] .tab-content :is(.bg-white,.bg-gray-50,.bg-gray-100,.bg-white\/70,.bg-gray-50\/50) {
-  background-color: var(--fh-cohesion-card) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
-}
-html.dark body[data-finhub-theme] .tab-content :is(.monthly-panel,.monthly-kpi,.account-card,.accounts-card,.account-summary-card,.report-card,.reports-card,.report-tile,.dashboard-widget,.debt-card,.debt-summary-card) :is(h1,h2,h3,h4,strong,label),
-html.dark body[data-finhub-theme] .tab-content :is(.bg-white,.bg-gray-50,.bg-gray-100,.bg-white\/70,.bg-gray-50\/50) :is(h1,h2,h3,h4,strong,label) {
-  color: var(--fh-cohesion-ink) !important;
-}
-html.dark body[data-finhub-theme] .tab-content :is(.monthly-panel,.monthly-kpi,.account-card,.accounts-card,.account-summary-card,.report-card,.reports-card,.report-tile,.dashboard-widget,.debt-card,.debt-summary-card) :is(.text-gray-400,.text-gray-500,.text-gray-600,.text-slate-400,.text-slate-500),
-html.dark body[data-finhub-theme] .tab-content :is(.bg-white,.bg-gray-50,.bg-gray-100,.bg-white\/70,.bg-gray-50\/50) :is(.text-gray-400,.text-gray-500,.text-gray-600,.text-slate-400,.text-slate-500) {
-  color: var(--fh-cohesion-muted) !important;
-}
-html.dark body[data-finhub-theme] .tab-content :is(input,select,textarea) {
-  background-color: var(--fh-cohesion-raised) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
-}
-html.dark body[data-finhub-theme] .tab-content :is(input,select,textarea)::placeholder {
-  color: var(--fh-cohesion-muted) !important;
-  opacity: .85 !important;
-}
-html.dark body[data-finhub-theme] .tab-content :is(th,td) { border-color: var(--fh-cohesion-border) !important; }
-
-/* Opaque modal surfaces: transaction log/edit, statement importer/reconciliation,
-   and the other standard workflows. The dimmed page overlay remains translucent. */
-html.dark body[data-finhub-theme] .fixed.inset-0[id$="-modal"] > div:not(.absolute),
-html.dark body[data-finhub-theme] .fixed.inset-0[id$="-modal"] > form,
-html.dark body[data-finhub-theme] .fixed.inset-0[id$="-modal"] > div > form {
-  background-color: var(--fh-cohesion-card) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
-  opacity: 1 !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-html.dark body[data-finhub-theme] :is(#transaction-modal,#bulk-edit-modal,#recon-modal,#vendor-rule-modal,#merchant-rule-modal,#import-rule-modal,#account-modal,#account-detail-modal,#debt-detail-modal,#debt-payment-modal,#interest-charge-modal,#joint-bill-modal,#transfer-modal,#zbb-item-modal,#category-modal,#income-category-modal,#type-modal,#calendar-modal,#available-to-spend-modal,#sinking-bucket-modal,#sinking-bucket-activity-modal,#backup-import-preview-modal) :is(.bg-white,.bg-gray-50,.bg-gray-100,.bg-gray-900) {
-  background-color: var(--fh-cohesion-raised) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
-}
-html.dark body[data-finhub-theme] :is(#transaction-modal,#bulk-edit-modal,#recon-modal,#vendor-rule-modal,#merchant-rule-modal,#import-rule-modal,#account-modal,#account-detail-modal,#debt-detail-modal,#debt-payment-modal,#interest-charge-modal,#joint-bill-modal,#transfer-modal,#zbb-item-modal,#category-modal,#income-category-modal,#type-modal,#calendar-modal,#available-to-spend-modal,#sinking-bucket-modal,#sinking-bucket-activity-modal,#backup-import-preview-modal) :is(input,select,textarea) {
-  background-color: var(--fh-cohesion-page) !important;
-  color: var(--fh-cohesion-ink) !important;
-  border-color: var(--fh-cohesion-border) !important;
-}
-html.dark body[data-finhub-theme] :is(#transaction-modal,#bulk-edit-modal,#recon-modal,#vendor-rule-modal,#merchant-rule-modal,#import-rule-modal,#account-modal,#account-detail-modal,#debt-detail-modal,#debt-payment-modal,#interest-charge-modal,#joint-bill-modal,#transfer-modal,#zbb-item-modal,#category-modal,#income-category-modal,#type-modal,#calendar-modal,#available-to-spend-modal,#sinking-bucket-modal,#sinking-bucket-activity-modal,#backup-import-preview-modal) :is(h1,h2,h3,h4,label,strong) {
-  color: var(--fh-cohesion-ink) !important;
-}
-html.dark body[data-finhub-theme] :is(#transaction-modal,#bulk-edit-modal,#recon-modal,#vendor-rule-modal,#merchant-rule-modal,#import-rule-modal,#account-modal,#account-detail-modal,#debt-detail-modal,#debt-payment-modal,#interest-charge-modal,#joint-bill-modal,#transfer-modal,#zbb-item-modal,#category-modal,#income-category-modal,#type-modal,#calendar-modal,#available-to-spend-modal,#sinking-bucket-modal,#sinking-bucket-activity-modal,#backup-import-preview-modal) :is(.text-gray-400,.text-gray-500,.text-gray-600) {
-  color: var(--fh-cohesion-muted) !important;
-}
-</style>
-
-
-
-<style id="finhub-accounts-and-checkin-light-mode-cohesion-2026-11-14">
-/* Light-mode-only visual alignment. Scoped to Accounts, Check-In headers and
-   semantic Cancel actions; no shared theme palette or application data changes. */
-html:not(.dark) body[data-finhub-theme] #tab-accounts {
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .monthly-kpi,
-html:not(.dark) body[data-finhub-theme] #tab-accounts .monthly-panel {
-  background:var(--fh-card, var(--surface-primary, #FFFFFF)) !important;
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-  border:1px solid var(--fh-border, var(--border-primary, #DCE5EF)) !important;
-  border-radius:1rem !important;
-  box-shadow:0 2px 8px rgba(25,35,55,.045) !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .monthly-kpi > div {
-  color:var(--fh-muted, var(--text-secondary, #64748B)) !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .monthly-kpi > strong {
-  font-family:inherit !important;
-  letter-spacing:normal !important;
-  font-variant-numeric:tabular-nums lining-nums !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .monthly-panel > h3 {
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .account-card {
-  background:var(--fh-surface, var(--surface-elevated, #F8FAFC)) !important;
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-  border:1px solid var(--fh-border, var(--border-primary, #DCE5EF)) !important;
-  border-radius:.9rem !important;
-  box-shadow:0 1px 3px rgba(25,35,55,.035) !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .account-card:hover {
-  border-color:var(--fh-primary, var(--accent-primary, #64748B)) !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .account-card :is(.text-gray-400,.text-gray-500,.text-gray-600) {
-  color:var(--fh-muted, var(--text-secondary, #64748B)) !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .account-card input:not([type="checkbox"]) {
-  background:var(--fh-card, var(--surface-primary, #FFFFFF)) !important;
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-  border-color:var(--fh-border, var(--border-primary, #DCE5EF)) !important;
-}
-html:not(.dark) body[data-finhub-theme] #tab-accounts .account-card input:not([type="checkbox"]):focus {
-  border-color:var(--fh-primary, var(--accent-primary, #64748B)) !important;
-  outline:2px solid color-mix(in srgb, var(--fh-primary, var(--accent-primary, #64748B)) 20%, transparent) !important;
-}
-
-/* Monthly Close and Year-End Review use the same light-mode card treatment. */
-html:not(.dark) body[data-finhub-theme] #checkin-panel-monthly #financial-close-period-blocks > div:first-child,
-html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly > .rounded-2xl.border:first-child {
-  background:var(--fh-card, var(--surface-primary, #FFFFFF)) !important;
-  border:1px solid var(--fh-border, var(--border-primary, #DCE5EF)) !important;
-  border-radius:1rem !important;
-  box-shadow:0 2px 8px rgba(25,35,55,.04) !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-monthly #financial-close-period-blocks > div:first-child > h4 {
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-monthly .global-collapsible-summary {
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  gap:1rem !important;
-  min-height:5.1rem !important;
-  padding:1rem 1.25rem !important;
-  background:var(--fh-card, var(--surface-primary, #FFFFFF)) !important;
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-  border:1px solid var(--fh-border, var(--border-primary, #DCE5EF)) !important;
-  border-radius:.9rem !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-monthly .global-collapsible-summary > span:first-child {
-  flex:0 0 235px !important;
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-  font-size:1.15rem !important;
-  font-weight:750 !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-monthly .global-collapsible-description {
-  flex:1 1 auto !important;
-  color:var(--fh-muted, var(--text-secondary, #64748B)) !important;
-  font-size:1rem !important;
-  font-weight:500 !important;
-  line-height:1.45 !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly > .rounded-2xl.border:first-child > div:first-child {
-  display:grid !important;
-  grid-template-columns:minmax(200px,235px) minmax(0,1fr) !important;
-  align-items:center !important;
-  gap:1rem !important;
-  min-height:5.1rem !important;
-  padding:.25rem .35rem !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly > .rounded-2xl.border:first-child > div:first-child h3 {
-  margin:0 !important;
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-  font-size:1.15rem !important;
-  line-height:1.35 !important;
-  font-weight:750 !important;
-}
-html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly > .rounded-2xl.border:first-child > div:first-child p {
-  margin:0 !important;
-  color:var(--fh-muted, var(--text-secondary, #64748B)) !important;
-  font-size:1rem !important;
-  line-height:1.45 !important;
-}
-
-/* A softer, theme-aware secondary action for Cancel; Save remains primary. */
-html:not(.dark) body[data-finhub-theme] button.fh-btn-cancel,
-html:not(.dark) body[data-finhub-theme] button.finhub-action-cancel {
-  background:color-mix(in srgb, var(--fh-primary, var(--accent-primary, #64748B)) 10%, var(--fh-card, var(--surface-primary, #FFFFFF))) !important;
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-  border:1px solid color-mix(in srgb, var(--fh-primary, var(--accent-primary, #64748B)) 30%, var(--fh-border, #DCE5EF)) !important;
-  box-shadow:none !important;
-}
-html:not(.dark) body[data-finhub-theme] button.fh-btn-cancel:hover:not(:disabled),
-html:not(.dark) body[data-finhub-theme] button.finhub-action-cancel:hover:not(:disabled) {
-  background:color-mix(in srgb, var(--fh-primary, var(--accent-primary, #64748B)) 16%, var(--fh-card, var(--surface-primary, #FFFFFF))) !important;
-  border-color:var(--fh-primary, var(--accent-primary, #64748B)) !important;
-  color:var(--fh-ink, var(--text-primary, #243447)) !important;
-}
-@media (max-width:640px) {
-  html:not(.dark) body[data-finhub-theme] #checkin-panel-monthly .global-collapsible-summary > span:first-child {
-    flex-basis:auto !important;
-  }
-  html:not(.dark) body[data-finhub-theme] #checkin-panel-yearly > .rounded-2xl.border:first-child > div:first-child {
-    grid-template-columns:minmax(0,1fr) !important;
-    gap:.35rem !important;
-  }
-}
-</style>
 
 
 
 
 
 
-<style id="finhub-account-metrics-single-row-v4">
-/* Account detail: keep the four balance/activity summaries together on desktop. */
-#account-detail-modal .fh-account-metrics {
-  display:grid !important;
-  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-  gap:.45rem !important;
-  align-items:stretch !important;
-}
-#account-detail-modal .fh-account-metrics > .fh-account-metric,
-#account-detail-modal .fh-account-metrics > .fh-account-opening {
-  grid-column:auto !important;
-  min-width:0 !important;
-  min-height:5.2rem !important;
-  padding:.5rem .58rem !important;
-}
-#account-detail-modal .fh-account-opening-controls {
-  gap:.25rem !important;
-}
-#account-detail-modal .fh-account-opening-controls input {
-  min-width:0 !important;
-  width:100% !important;
-  padding-left:.35rem !important;
-  padding-right:.35rem !important;
-  font-size:.76rem !important;
-}
-#account-detail-modal .fh-account-save {
-  padding-left:.42rem !important;
-  padding-right:.42rem !important;
-  font-size:.64rem !important;
-}
-#account-detail-modal .fh-account-help {
-  font-size:.54rem !important;
-  line-height:1.15 !important;
-}
-#account-detail-modal .fh-account-metric-label {
-  font-size:.59rem !important;
-  line-height:1.15 !important;
-}
-#account-detail-modal .fh-account-metric-value {
-  font-size:clamp(.85rem,1.35vw,1.05rem) !important;
-  overflow-wrap:anywhere !important;
-}
-@media (max-width:760px) {
-  #account-detail-modal .fh-account-metrics {
-    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  }
-}
-@media (max-width:430px) {
-  #account-detail-modal .fh-account-metrics {
-    grid-template-columns:minmax(0,1fr) !important;
-  }
-}
-</style>
-
-
-
-
-
-<style id="finhub-theme-specific-dark-surface-system-v7-2026-11-14">
-/*
-  Theme-aware dark surfaces v7.
-  One shared depth formula, with a distinct hue family for every theme.
-  These tokens intentionally override the former app-wide plum assignment.
-*/
-html.dark body[data-finhub-theme="classic"] {
-  --fh-dark-page:#241736; --fh-dark-card:#322145; --fh-dark-raised:#39284d; --fh-dark-elevated:#443057; --fh-dark-border:#5b3d78;
-  --fh-dark-text:#f5f0ff; --fh-dark-muted:#c4b5d5; --fh-dark-subtle:#a996bd;
-}
-html.dark body[data-finhub-theme="silver"] {
-  --fh-dark-page:#171d24; --fh-dark-card:#222b35; --fh-dark-raised:#293542; --fh-dark-elevated:#344252; --fh-dark-border:#3b4856;
-  --fh-dark-text:#e5eaf0; --fh-dark-muted:#b8c3ce; --fh-dark-subtle:#94a3b2;
-}
-html.dark body[data-finhub-theme="neutral"] {
-  --fh-dark-page:#211f1b; --fh-dark-card:#302c26; --fh-dark-raised:#39342c; --fh-dark-elevated:#454035; --fh-dark-border:#51483d;
-  --fh-dark-text:#eee8de; --fh-dark-muted:#c9bdad; --fh-dark-subtle:#aa9d8c;
-}
-html.dark body[data-finhub-theme="colorful"] {
-  --fh-dark-page:#21151e; --fh-dark-card:#30202c; --fh-dark-raised:#392633; --fh-dark-elevated:#493142; --fh-dark-border:#59394d;
-  --fh-dark-text:#f8eaf1; --fh-dark-muted:#d6b9c8; --fh-dark-subtle:#b994a8;
-}
-html.dark body[data-finhub-theme="oceanpop"] {
-  --fh-dark-page:#101d2d; --fh-dark-card:#17283b; --fh-dark-raised:#1c3045; --fh-dark-elevated:#243b52; --fh-dark-border:#35576b;
-  --fh-dark-text:#e9f7f5; --fh-dark-muted:#b8d1d4; --fh-dark-subtle:#91b2b9;
-}
-html.dark body[data-finhub-theme="orangecherry"] {
-  --fh-dark-page:#541316; --fh-dark-card:#681d20; --fh-dark-raised:#742729; --fh-dark-elevated:#81332e; --fh-dark-border:#87402f;
-  --fh-dark-text:#fff1e8; --fh-dark-muted:#f0c2a8; --fh-dark-subtle:#dca18c;
-}
-html.dark body[data-finhub-theme="midnightpop"] {
-  --fh-dark-page:#171426; --fh-dark-card:#211d33; --fh-dark-raised:#2b2640; --fh-dark-elevated:#35304b; --fh-dark-border:#51466a;
-  --fh-dark-text:#f5f0ff; --fh-dark-muted:#b3a9c9; --fh-dark-subtle:#968bad;
-}
-html.dark body[data-finhub-theme="forestmint"] {
-  --fh-dark-page:#10231f; --fh-dark-card:#18352e; --fh-dark-raised:#204238; --fh-dark-elevated:#2b5145; --fh-dark-border:#3b7160;
-  --fh-dark-text:#effaf5; --fh-dark-muted:#b9d8ca; --fh-dark-subtle:#91b8a7;
-}
-html.dark body[data-finhub-theme="pastelbreeze"] {
-  --fh-dark-page:#261a19; --fh-dark-card:#3a2724; --fh-dark-raised:#49312b; --fh-dark-elevated:#5a3b32; --fh-dark-border:#805447;
-  --fh-dark-text:#fff3eb; --fh-dark-muted:#e4c4b5; --fh-dark-subtle:#c9a394;
-}
-html.dark body[data-finhub-theme="purplepulse"] {
-  --fh-dark-page:#1c1029; --fh-dark-card:#2c1940; --fh-dark-raised:#39204f; --fh-dark-elevated:#482a61; --fh-dark-border:#70458c;
-  --fh-dark-text:#f8f0ff; --fh-dark-muted:#d0b9e2; --fh-dark-subtle:#ad8bc6;
-}
-html.dark body[data-finhub-theme="oceanslate"] {
-  --fh-dark-page:#10212c; --fh-dark-card:#193442; --fh-dark-raised:#214454; --fh-dark-elevated:#2b5667; --fh-dark-border:#42798b;
-  --fh-dark-text:#effaff; --fh-dark-muted:#bdd8e2; --fh-dark-subtle:#91b8c7;
-}
-html.dark body[data-finhub-theme="finhubblue"] {
-  --fh-dark-page:#0d1d30; --fh-dark-card:#142b45; --fh-dark-raised:#1d3a5b; --fh-dark-elevated:#27496c; --fh-dark-border:#37628a;
-  --fh-dark-text:#edf5ff; --fh-dark-muted:#b8cbe0; --fh-dark-subtle:#91abc7;
-}
-html.dark body[data-finhub-theme="hibiscus"] {
-  --fh-dark-page:#052d2c; --fh-dark-card:#073d3b; --fh-dark-raised:#10534d; --fh-dark-elevated:#1c665d; --fh-dark-border:#397c70;
-  --fh-dark-text:#effaf5; --fh-dark-muted:#b8d8d0; --fh-dark-subtle:#91bdb1;
-}
-
-/* Shared semantic aliases: same component hierarchy, theme-specific colours. */
-html.dark body[data-finhub-theme] {
-  --fh-cohesion-page:var(--fh-dark-page) !important;
-  --fh-cohesion-card:var(--fh-dark-card) !important;
-  --fh-cohesion-raised:var(--fh-dark-raised) !important;
-  --fh-cohesion-border:var(--fh-dark-border) !important;
-  --fh-cohesion-ink:var(--fh-dark-text) !important;
-  --fh-cohesion-muted:var(--fh-dark-muted) !important;
-  --bg-primary:var(--fh-dark-page) !important;
-  --bg-secondary:var(--fh-dark-card) !important;
-  --surface-primary:var(--fh-dark-card) !important;
-  --surface-secondary:var(--fh-dark-raised) !important;
-  --surface-elevated:var(--fh-dark-elevated) !important;
-  --control-bg:var(--fh-dark-raised) !important;
-  --control-border:var(--fh-dark-border) !important;
-  background:var(--fh-dark-page) !important;
-  background-color:var(--fh-dark-page) !important;
-  color:var(--fh-dark-text) !important;
-}
-
-/* All pages and major content regions use the active theme's page canvas. */
-html.dark body[data-finhub-theme] main,
-html.dark body[data-finhub-theme] .tab-content,
-html.dark body[data-finhub-theme] .tab-content > section,
-html.dark body[data-finhub-theme] .tab-content > .tab-pane,
-html.dark body[data-finhub-theme] [id^="tab-"] {
-  background-color:var(--fh-dark-page) !important;
-  color:var(--fh-dark-text) !important;
-}
-
-/* Cards, panels, debt sections and nested boxes share the active theme's card fill. */
-html.dark body[data-finhub-theme] .tab-content :is(
-  .monthly-panel,.monthly-kpi,.account-card,.accounts-card,.account-summary-card,
-  .report-card,.reports-card,.report-tile,.dashboard-widget,
-  .debt-card,.debt-summary-card,.debt-simulator-card,.budget-card,.planner-card,
-  .expense-card,.monthly-overview-card,.global-collapsible-section,.global-collapsible-summary,
-  .rounded-lg.border,.rounded-xl.border,.rounded-2xl.border,
-  .border.rounded-lg,.border.rounded-xl,.border.rounded-2xl,
-  .bg-white,.bg-gray-50,.bg-gray-100,.bg-white\/70,.bg-gray-50\/50,
-  .bg-gray-950,.bg-gray-900,.dark\:bg-gray-950,.dark\:bg-gray-900,
-  .dark\:bg-gray-950\/40,.dark\:bg-gray-900\/40,
-  .dark\:bg-indigo-950\/40,.dark\:bg-indigo-950\/20,
-  [class*="bg-gray-950"],[class*="bg-gray-900"]
-) {
-  background-color:var(--fh-dark-card) !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-  background-image:none !important;
-}
-html.dark body[data-finhub-theme] .tab-content :is(
-  .global-collapsible-section > div,.debt-activity-content,.debt-simulator-heading
-) {
-  background-color:var(--fh-dark-card) !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-}
-
-/* Inputs and select controls use the next lighter step in the same theme. */
-html.dark body[data-finhub-theme] .tab-content :is(
-  input:not([type="checkbox"]):not([type="radio"]),select,textarea
-),
-html.dark body[data-finhub-theme] .fixed.inset-0[id$="-modal"] :is(
-  input:not([type="checkbox"]):not([type="radio"]),select,textarea
-) {
-  background-color:var(--fh-dark-raised) !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-  color-scheme:dark;
-}
-html.dark body[data-finhub-theme] :is(input,textarea)::placeholder {
-  color:var(--fh-dark-muted) !important; opacity:1 !important;
-}
-html.dark body[data-finhub-theme] .tab-content table :is(thead,tfoot) {
-  background-color:var(--fh-dark-card) !important; color:var(--fh-dark-text) !important;
-}
-html.dark body[data-finhub-theme] .tab-content table :is(th,td) { border-color:var(--fh-dark-border) !important; }
-html.dark body[data-finhub-theme] .tab-content table tbody tr:hover { background-color:var(--fh-dark-elevated) !important; }
-html.dark body[data-finhub-theme] .fixed.inset-0[id$="-modal"] > div:not(.absolute),
-html.dark body[data-finhub-theme] .fixed.inset-0[id$="-modal"] > form,
-html.dark body[data-finhub-theme] .fixed.inset-0[id$="-modal"] > div > form {
-  background-color:var(--fh-dark-card) !important; color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important; opacity:1 !important;
-  backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
-}
-html.dark body[data-finhub-theme] * { scrollbar-color:var(--fh-dark-border) var(--fh-dark-page); }
-</style>
-
-
-<style id="finhub-theme-surface-normalization-v8-2026-11-14">
-/*
-  Theme surface normalization v8.
-  Removes legacy plum-only overrides and applies the Accounts-page component
-  hierarchy using the active theme's own v7 tokens. Dark mode only.
-*/
-
-/* Bind shared aliases to the active theme's palette without changing accents. */
-html.dark body[data-finhub-theme] {
-  --fh-cohesion-page:var(--fh-dark-page) !important;
-  --fh-cohesion-card:var(--fh-dark-card) !important;
-  --fh-cohesion-raised:var(--fh-dark-raised) !important;
-  --fh-cohesion-border:var(--fh-dark-border) !important;
-  --fh-cohesion-ink:var(--fh-dark-text) !important;
-  --fh-cohesion-muted:var(--fh-dark-muted) !important;
-  --bg-primary:var(--fh-dark-page) !important;
-  --bg-secondary:var(--fh-dark-card) !important;
-  --surface-primary:var(--fh-dark-card) !important;
-  --surface-secondary:var(--fh-dark-raised) !important;
-  --surface-elevated:var(--fh-dark-elevated) !important;
-  --control-bg:var(--fh-dark-raised) !important;
-  --control-border:var(--fh-dark-border) !important;
-  background:var(--fh-dark-page) !important;
-  background-color:var(--fh-dark-page) !important;
-  color:var(--fh-dark-text) !important;
-}
-
-/* Page canvas and page-heading strips: no inherited plum banner on other themes. */
-html.dark body[data-finhub-theme] main,
-html.dark body[data-finhub-theme] .tab-content,
-html.dark body[data-finhub-theme] .tab-content > section,
-html.dark body[data-finhub-theme] [id^="tab-"],
-html.dark body[data-finhub-theme] .tab-content > div:first-child,
-html.dark body[data-finhub-theme] #tab-dashboard > div:first-child,
-html.dark body[data-finhub-theme] #tab-debt > div:first-child {
-  background-color:var(--fh-dark-page) !important;
-  color:var(--fh-dark-text) !important;
-  background-image:none !important;
-}
-
-/* Accounts-page standard: all primary cards share one clear, theme-coloured fill. */
-html.dark body[data-finhub-theme] .tab-content :is(
-  .monthly-kpi,.monthly-panel,.account-card,.accounts-card,.account-summary-card,
-  .report-card,.reports-card,.report-tile,.dashboard-widget,.debt-card,
-  .debt-summary-card,.debt-simulator-card,.budget-card,.planner-card,
-  .expense-card,.monthly-overview-card,.global-collapsible-section,
-  .global-collapsible-summary,
-  .rounded-lg.border,.rounded-xl.border,.rounded-2xl.border,
-  .border.rounded-lg,.border.rounded-xl,.border.rounded-2xl,
-  .bg-white,.bg-gray-50,.bg-gray-100,.bg-white\/70,.bg-gray-50\/50,
-  .bg-gray-950,.bg-gray-900,.dark\:bg-gray-950,.dark\:bg-gray-900,
-  .dark\:bg-gray-950\/40,.dark\:bg-gray-900\/40,
-  .dark\:bg-indigo-950\/40,.dark\:bg-indigo-950\/20
-) {
-  background-color:var(--fh-dark-card) !important;
-  background-image:none !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-}
-
-/* Normalize nested cards and disclosure bodies, especially the Debt tracker. */
-html.dark body[data-finhub-theme] .tab-content :is(
-  .global-collapsible-section > div,.debt-activity-content,
-  .debt-simulator-heading,[id^="sec-debt-"],
-  #debt-simulator-content,#debt-report-summary > div,
-  .debt-activity-section > .debt-activity-content
-),
-html.dark body[data-finhub-theme] #tab-debt :is(
-  [class*="rounded-"][class*="border"],
-  [class*="bg-gray-950"],[class*="bg-gray-900"],
-  [class*="bg-white"],[class*="bg-gray-50"],[class*="bg-gray-100"],
-  .debt-simulator-card,.global-collapsible-section,
-  .global-collapsible-section > div,
-  details:not(.global-collapsible-section) > summary,
-  details:not(.global-collapsible-section) > div
-) {
-  background-color:var(--fh-dark-card) !important;
-  background-image:none !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-}
-
-/* Account and Debt page section headers use the same card fill, not a stray hue. */
-html.dark body[data-finhub-theme] #tab-accounts :is(.monthly-panel,.monthly-kpi),
-html.dark body[data-finhub-theme] #tab-debt :is(
-  .global-collapsible-summary,.debt-simulator-heading,
-  details > summary,table thead,table tfoot
-) {
-  background-color:var(--fh-dark-card) !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-}
-
-/* Inputs use the next lighter step in the same theme. */
-html.dark body[data-finhub-theme] .tab-content :is(
-  input:not([type="checkbox"]):not([type="radio"]),select,textarea
-),
-html.dark body[data-finhub-theme] .fixed.inset-0[id$="-modal"] :is(
-  input:not([type="checkbox"]):not([type="radio"]),select,textarea
-) {
-  background-color:var(--fh-dark-raised) !important;
-  color:var(--fh-dark-text) !important;
-  border-color:var(--fh-dark-border) !important;
-  color-scheme:dark;
-}
-html.dark body[data-finhub-theme] :is(input,textarea)::placeholder {
-  color:var(--fh-dark-muted) !important;
-  opacity:1 !important;
-}
-
-/* Tables and hover states follow the same surface hierarchy. */
-html.dark body[data-finhub-theme] .tab-content table :is(thead,tfoot) {
-  background-color:var(--fh-dark-card) !important;
-  color:var(--fh-dark-text) !important;
-}
-html.dark body[data-finhub-theme] .tab-content table :is(th,td) {
-  border-color:var(--fh-dark-border) !important;
-}
-html.dark body[data-finhub-theme] .tab-content table tbody tr:hover {
-  background-color:var(--fh-dark-elevated) !important;
-}
-
-/* Shared text contrast; semantic income, expense, warning and transfer colours survive. */
-html.dark body[data-finhub-theme] .tab-content :is(
-  .text-gray-900,.text-gray-800,.text-gray-700,
-  .text-slate-900,.text-slate-800,.text-slate-700
-) { color:var(--fh-dark-text) !important; }
-html.dark body[data-finhub-theme] .tab-content :is(
-  .text-gray-600,.text-gray-500,.text-gray-400,
-  .text-slate-600,.text-slate-500,.text-slate-400,
-  .global-collapsible-description
-) { color:var(--fh-dark-muted) !important; }
-
-/* Preserve theme-coloured actions and chart/category colours. */
-html.dark body[data-finhub-theme] :is(
-  .finhub-btn-primary,.finhub-action-save,.theme-bg,
-  .bg-indigo-600,.bg-violet-600,.bg-purple-600
-) {
-  background-color:var(--fh-primary,var(--accent-primary,#64748b)) !important;
-  border-color:var(--fh-primary,var(--accent-primary,#64748b)) !important;
-  color:#fff !important;
-}
-html.dark body[data-finhub-theme] .tab-content :is(canvas,svg) {
-  background-color:transparent !important;
-}
-html.dark body[data-finhub-theme] * {
-  scrollbar-color:var(--fh-dark-border) var(--fh-dark-page);
-}
-</style>
